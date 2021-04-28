@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Tree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Terrain.tscn" type="PackedScene" id=5]
+
+[node name="Level" type="Node"]
+
+[node name="Terrain" parent="." instance=ExtResource( 5 )]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+input_pickable = true
+
+[node name="Tree" parent="." instance=ExtResource( 3 )]
+
+[node name="GUI" parent="." instance=ExtResource( 4 )]
+anchor_bottom = 0.178
+margin_right = -1.00001
+margin_bottom = 0.296001
