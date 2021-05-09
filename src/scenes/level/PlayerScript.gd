@@ -24,6 +24,10 @@ var fireball_cooldown_time = 1000
 var next_fireball_time = 0
 
 var fireball_scene = preload("res://entities/fireball/Fireball.tscn")
+
+# Sub-nodes
+onready var animationPlayer = $AnimationPlayer
+
 # Signals
 signal player_stats_changed
 
@@ -117,9 +121,7 @@ func _input(event):
 
 func _on_AnimatedSprite_animation_finished():
 	attack_playing = false
-	print($AnimatedSprite.animation)
 	if $AnimatedSprite.animation.begins_with("fireball_"):
-		print("fireball")
 		# Instantiate Fireball
 		var fireball = fireball_scene.instance()
 		fireball.attack_damage = fireball_damage
@@ -145,6 +147,9 @@ func hit(damage):
 	emit_signal("player_stats_changed", self)
 	if health <= 0:
 		set_process(false)
-		$AnimationPlayer.play("Game Over")
+		play_animation("Game Over")
 	else:
-		$AnimationPlayer.play("Hit")
+		play_animation("Hit")
+
+func play_animation(animationName):
+	animationPlayer.play(animationName)
