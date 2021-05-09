@@ -1,0 +1,217 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://GUI/potions.png" type="Texture" id=1]
+[ext_resource path="res://GUI/fonts/Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://GUI/Mana.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Health.gd" type="Script" id=4]
+[ext_resource path="res://scenes/GUI.gd" type="Script" id=5]
+[ext_resource path="res://scenes/GameOver.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "game over"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 5 )
+
+[node name="Health" type="ColorRect" parent="."]
+margin_right = 250.0
+margin_bottom = 40.0
+color = Color( 0, 0, 0, 0.627451 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="ColorRect" parent="Health"]
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 246.0
+margin_bottom = 35.0
+color = Color( 1, 0.196078, 0.196078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mana" type="ColorRect" parent="."]
+margin_top = 46.0
+margin_right = 250.0
+margin_bottom = 86.0
+color = Color( 0, 0, 0, 0.627451 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="ColorRect" parent="Mana"]
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 246.0
+margin_bottom = 35.0
+color = Color( 0.129412, 0.501961, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XP" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -123.0
+margin_top = -118.0
+margin_right = 128.0
+margin_bottom = -23.9999
+color = Color( 0, 0, 0, 0.627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelXP" type="Label" parent="XP"]
+anchor_bottom = 0.05
+margin_left = 3.0
+margin_top = 11.0
+margin_right = 51.0
+margin_bottom = 39.3
+custom_fonts/font = ExtResource( 2 )
+text = "XP:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelLVL" type="Label" parent="XP"]
+margin_left = 3.0
+margin_top = 52.0
+margin_right = 64.0
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 2 )
+text = "LVL:"
+
+[node name="ValueXP" type="Label" parent="XP"]
+margin_left = 156.765
+margin_top = 11.0
+margin_right = 245.765
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 2 )
+text = "0/100"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ValueLVL" type="Label" parent="XP"]
+margin_left = 193.534
+margin_top = 52.0
+margin_right = 243.534
+margin_bottom = 85.0
+custom_fonts/font = ExtResource( 2 )
+text = "1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthPotions" type="ColorRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -438.728
+margin_top = 5.66968
+margin_right = -248.728
+margin_bottom = 105.67
+color = Color( 0, 0, 0, 0.627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthIcon" type="Sprite" parent="HealthPotions"]
+position = Vector2( 33, 42 )
+scale = Vector2( 4, 5 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+
+[node name="Amount" type="Label" parent="HealthPotions/HealthIcon"]
+margin_left = 6.0
+margin_top = -8.0
+margin_right = 71.0
+margin_bottom = 25.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaPotions" type="ColorRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -196.688
+margin_top = 6.0
+margin_right = -6.68774
+margin_bottom = 106.0
+color = Color( 0, 0, 0, 0.627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ManaIcon" type="Sprite" parent="ManaPotions"]
+position = Vector2( 32, 42 )
+scale = Vector2( 4, 5 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[node name="Amount" type="Label" parent="ManaPotions/ManaIcon"]
+margin_left = 6.0
+margin_top = -8.0
+margin_right = 71.0
+margin_bottom = 25.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.54902, 0, 0, 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GameOver"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -340.0
+margin_top = -16.5
+margin_right = -165.0
+margin_bottom = 16.5
+rect_scale = Vector2( 4, 4 )
+custom_fonts/font = ExtResource( 2 )
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
+"anims/game over" = SubResource( 1 )

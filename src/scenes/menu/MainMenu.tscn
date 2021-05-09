@@ -6,8 +6,8 @@
 [ext_resource path="res://assets/main_menu/label_options.png" type="Texture" id=4]
 [ext_resource path="res://assets/main_menu/SA-meteor.jpg" type="Texture" id=6]
 [ext_resource path="res://assets/main_menu/background.png" type="Texture" id=7]
-[ext_resource path="res://MainMenu.gd" type="Script" id=8]
-[ext_resource path="res://Level.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/menu/MainMenu.gd" type="Script" id=8]
+[ext_resource path="res://scenes/level/Level.tscn" type="PackedScene" id=9]
 
 [node name="Main" type="Node"]
 script = ExtResource( 8 )
