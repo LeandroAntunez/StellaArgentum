@@ -135,15 +135,9 @@ func _input(event):
 			# Add cooldown time to current time
 			next_fireball_time = now + fireball_cooldown_time
 	elif event.is_action_pressed("drink_health"):
-		if health_potions > 0:
-			health_potions = health_potions - 1
-			health = min(health + 50, health_max)
-			emit_signal("player_stats_changed", self)
+		drink_health_potion()
 	elif event.is_action_pressed("drink_mana"):
-		if mana_potions > 0:
-			mana_potions = mana_potions - 1
-			mana = min(mana + 50, mana_max)
-			emit_signal("player_stats_changed", self)
+		drink_mana_potion()
 
 func _on_AnimatedSprite_animation_finished():
 	attack_playing = false
@@ -196,3 +190,15 @@ func add_xp(value):
 		print("1")
 		emit_signal("player_level_up")
 	emit_signal("player_stats_changed", self)
+
+func drink_health_potion():
+		if health_potions > 0:
+			health_potions = health_potions - 1
+			health = min(health + 50, health_max)
+			emit_signal("player_stats_changed", self)
+
+func drink_mana_potion():
+		if mana_potions > 0:
+			mana_potions = mana_potions - 1
+			mana = min(mana + 50, mana_max)
+			emit_signal("player_stats_changed", self)

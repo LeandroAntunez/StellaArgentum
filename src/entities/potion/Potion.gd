@@ -17,6 +17,12 @@ func _ready():
 	else:
 		$Sprite.region_rect.position.x = 0
 
+func change_type():
+	if type == Potion.HEALTH:
+		type = Potion.MANA
+	else:
+		type = Potion.HEALTH
+
 func _on_Potion_body_entered(body):
 	if body.name == "Player":
 		body.add_potion(type)
