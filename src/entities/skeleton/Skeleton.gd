@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+# Reference to potion scene
+var potion_scene = preload("res://Entities/potion/Potion.tscn")
+
 # Skeleton stats
 var health = 100
 var health_max = 100
@@ -129,7 +132,6 @@ func hit(damage):
 	health -= damage
 	if health > 0:
 		$AnimationPlayer.play("hit")
-		print("hit animation")
 	else:
 		$Timer.stop()
 		direction = Vector2.ZERO
@@ -137,6 +139,14 @@ func hit(damage):
 		other_animation_playing = true
 		$AnimatedSprite.play("death")
 		emit_signal("death")
+		# 80% probability to drop a potion on death
+		if rng.randf() <= 0.8:
+			var potion = potion_scene.instance()
+			potion.type = rng.randi() % 2
+			get_tree().root.get_node("Level").call_deferred("add_child", potion)
+			potion.position = position
+		# Add XP to player
+		player.add_xp(25)
 
 
 func _on_AnimatedSprite_frame_changed():

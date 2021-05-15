@@ -13,6 +13,11 @@ var mana = 100
 var mana_max = 100
 var mana_regeneration = 2
 
+# Player inventory
+enum Potion { HEALTH, MANA }
+var health_potions = 0
+var mana_potions = 0
+
 # Attack variables
 var attack_cooldown_time = 1000
 var next_attack_time = 0
@@ -23,6 +28,11 @@ var fireball_damage = 50
 var fireball_cooldown_time = 1000
 var next_fireball_time = 0
 
+# Experience variables
+var xp = 75;
+var xp_next_level = 100;
+var level = 1;
+
 var fireball_scene = preload("res://entities/fireball/Fireball.tscn")
 
 # Sub-nodes
@@ -30,6 +40,7 @@ onready var animationPlayer = $AnimationPlayer
 
 # Signals
 signal player_stats_changed
+signal player_level_up
 
 func _ready():
 	emit_signal("player_stats_changed", self)
@@ -100,6 +111,11 @@ func _input(event):
 				if target.name.find("Skeleton") >= 0:
 					# Skeleton hit!
 					target.hit(attack_damage)
+				# NEW CODE - START
+				if target.is_in_group("NPCs"):
+					# Talk to NPC
+					target.talk()
+					return
 			# Play attack animation
 			attack_playing = true
 			var animation = "attack_" + get_animation_direction(last_direction)
@@ -118,6 +134,16 @@ func _input(event):
 			$AnimatedSprite.play(animation)
 			# Add cooldown time to current time
 			next_fireball_time = now + fireball_cooldown_time
+	elif event.is_action_pressed("drink_health"):
+		if health_potions > 0:
+			health_potions = health_potions - 1
+			health = min(health + 50, health_max)
+			emit_signal("player_stats_changed", self)
+	elif event.is_action_pressed("drink_mana"):
+		if mana_potions > 0:
+			mana_potions = mana_potions - 1
+			mana = min(mana + 50, mana_max)
+			emit_signal("player_stats_changed", self)
 
 func _on_AnimatedSprite_animation_finished():
 	attack_playing = false
@@ -153,3 +179,20 @@ func hit(damage):
 
 func play_animation(animationName):
 	animationPlayer.play(animationName)
+
+func add_potion(type):
+	if type == Potion.HEALTH:
+		health_potions = health_potions + 1
+	else:
+		mana_potions = mana_potions + 1
+	emit_signal("player_stats_changed", self)
+
+func add_xp(value):
+	xp += value
+	# Has the player reached the next level?
+	if xp >= xp_next_level:
+		level += 1
+		xp_next_level *= 2
+		print("1")
+		emit_signal("player_level_up")
+	emit_signal("player_stats_changed", self)

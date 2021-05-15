@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/level/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/level/Tree.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level/Terrain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/skeleton/Skeleton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/potion/Potion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/necklace/Necklace.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/fiona/Fiona.tscn" type="PackedScene" id=7]
 
 [node name="Level" type="Node"]
 
@@ -18,6 +21,12 @@ input_pickable = true
 [node name="Skeleton" parent="." instance=ExtResource( 4 )]
 position = Vector2( 600, 600 )
 
+[node name="Skeleton6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 681.173, 477.296 )
+
+[node name="Skeleton7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 545.255, 505.613 )
+
 [node name="Skeleton2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 803.77, 143.016 )
 
@@ -29,3 +38,13 @@ position = Vector2( 219.43, 541.566 )
 
 [node name="Skeleton4" parent="." instance=ExtResource( 4 )]
 position = Vector2( 381.247, 187.966 )
+
+[node name="Potion" parent="." instance=ExtResource( 5 )]
+position = Vector2( 550.603, 355.573 )
+
+[node name="Necklace" parent="." instance=ExtResource( 6 )]
+position = Vector2( 590.865, 288.825 )
+
+[node name="Fiona" parent="." instance=ExtResource( 7 )]
+position = Vector2( 694.604, 265.032 )
+scale = Vector2( 2, 2 )
