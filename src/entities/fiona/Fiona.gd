@@ -28,8 +28,8 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Hello adventurer! I lost my necklace, can you find it for me?"
-					dialoguePopup.answers = "[A] Yes  [B] No"
+					dialoguePopup.dialogue = "Hola aventurero! He perdido mi collar, \n puedes encontrarlo por mi?"
+					dialoguePopup.answers = "[A] Si  [B] No"
 					dialoguePopup.open()
 				1:
 					match answer:
@@ -37,15 +37,15 @@ func talk(answer = ""):
 							# Update dialogue tree state
 							dialogue_state = 2
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Thank you!"
-							dialoguePopup.answers = "[A] Bye"
+							dialoguePopup.dialogue = "Muchas gracias!"
+							dialoguePopup.answers = "[A] Adios"
 							dialoguePopup.open()
 						"B":
 							# Update dialogue tree state
 							dialogue_state = 3
 							# Show dialogue popup
-							dialoguePopup.dialogue = "If you change your mind, you'll find me here."
-							dialoguePopup.answers = "[A] Bye"
+							dialoguePopup.dialogue = "Si cambias de opinion, me encontraras aqui."
+							dialoguePopup.answers = "[A] Adios"
 							dialoguePopup.open()
 				2:
 					# Update dialogue tree state
@@ -68,9 +68,9 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Did you find my necklace?"
+					dialoguePopup.dialogue = "Encontraste mi collar?"
 					if necklace_found:
-						dialoguePopup.answers = "[A] Yes  [B] No"
+						dialoguePopup.answers = "[A] Si  [B] No"
 					else:
 						dialoguePopup.answers = "[A] No"
 					dialoguePopup.open()
@@ -79,15 +79,15 @@ func talk(answer = ""):
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup
-						dialoguePopup.dialogue = "You're my hero! Please take this potion as a sign of \n my gratitude!"
-						dialoguePopup.answers = "[A] Thanks"
+						dialoguePopup.dialogue = "Eres mi heroe! Por favor, toma esta pocion \n como simbolo de mi gratitud!"
+						dialoguePopup.answers = "[A] Gracias"
 						dialoguePopup.open()
 					else:
 						# Update dialogue tree state
 						dialogue_state = 3
 						# Show dialogue popup
-						dialoguePopup.dialogue = "Please, find it!"
-						dialoguePopup.answers = "[A] I will!"
+						dialoguePopup.dialogue = "Por favor, encuentralo!"
+						dialoguePopup.answers = "[A] Lo hare!"
 						dialoguePopup.open()
 				2:
 					# Update dialogue tree state

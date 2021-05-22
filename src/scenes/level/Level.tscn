@@ -18,6 +18,9 @@
 position = Vector2( 625.066, 356.409 )
 input_pickable = true
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+
 [node name="Skeleton" parent="." instance=ExtResource( 4 )]
 position = Vector2( 600, 600 )
 
@@ -43,7 +46,7 @@ position = Vector2( 381.247, 187.966 )
 position = Vector2( 550.603, 355.573 )
 
 [node name="Necklace" parent="." instance=ExtResource( 6 )]
-position = Vector2( 590.865, 288.825 )
+position = Vector2( 729.845, 622.021 )
 
 [node name="Fiona" parent="." instance=ExtResource( 7 )]
 position = Vector2( 694.604, 265.032 )

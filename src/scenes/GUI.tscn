@@ -105,8 +105,8 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -123.0
 margin_top = -118.0
-margin_right = 128.0
-margin_bottom = -23.9999
+margin_right = 192.0
+margin_bottom = -24.0
 color = Color( 0, 0, 0, 0.627451 )
 script = ExtResource( 9 )
 __meta__ = {
@@ -364,7 +364,7 @@ margin_right = 1056.0
 margin_bottom = 152.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.501961, 0.501961, 0.501961, 1 )
-text = "Hello adventurer! I lost my necklace, can you find it for me?"
+text = "Hola aventurero! He perdido mi Collar. Puedes encontrarlo por mi?"
 percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -380,7 +380,7 @@ margin_top = -33.0
 margin_right = 104.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "[A] YES [B] NO"
+text = "[A] SI [B] NO"
 percent_visible = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DialoguePopup"]
