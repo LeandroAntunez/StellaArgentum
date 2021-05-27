@@ -9,7 +9,7 @@ var player
 enum Potion { HEALTH, MANA }
 
 func _ready():
-	dialoguePopup = get_tree().root.get_node("Level/Player/GUI/DialoguePopup")
+	dialoguePopup = get_tree().root.get_node("Level/GUI/DialoguePopup")
 	player = get_tree().root.get_node("Level/Player")
 
 func talk(answer = ""):
