@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://assets/textures/character/player_frames/player_down_fireball_2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/level/PlayerScript.gd" type="Script" id=2]
@@ -34,6 +34,8 @@
 [ext_resource path="res://assets/textures/character/player_frames/player_right_attack_2.png" type="Texture" id=32]
 [ext_resource path="res://assets/textures/character/player_frames/player_down_attack_2.png" type="Texture" id=33]
 [ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=34]
+[ext_resource path="res://assets/textures/effects/LevelUp!.png" type="Texture" id=35]
+[ext_resource path="res://entities/player/PlayerEffects.gd" type="Script" id=36]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -47,54 +49,24 @@ animations = [ {
 "name": "walk_left",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "fireball_up",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 18 ) ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_up",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "idle_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "idle_right",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 25 ), ExtResource( 33 ) ],
-"loop": false,
-"name": "attack_down",
-"speed": 7.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 28 ), ExtResource( 32 ) ],
 "loop": false,
 "name": "attack_right",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 24 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 17 ), ExtResource( 1 ) ],
 "loop": false,
-"name": "fireball_left",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 31 ), ExtResource( 27 ) ],
-"loop": false,
-"name": "attack_left",
+"name": "fireball_down",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 11 ) ],
@@ -102,9 +74,9 @@ animations = [ {
 "name": "idle_down",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 19 ), ExtResource( 21 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 25 ), ExtResource( 33 ) ],
 "loop": false,
-"name": "fireball_right",
+"name": "attack_down",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 29 ), ExtResource( 30 ) ],
@@ -112,9 +84,39 @@ animations = [ {
 "name": "attack_up",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 17 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "idle_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle_right",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 24 ), ExtResource( 20 ) ],
 "loop": false,
-"name": "fireball_down",
+"name": "fireball_left",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 19 ), ExtResource( 21 ) ],
+"loop": false,
+"name": "fireball_right",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 31 ), ExtResource( 27 ) ],
+"loop": false,
+"name": "attack_left",
 "speed": 7.0
 } ]
 
@@ -125,7 +127,7 @@ extents = Vector2( 8.77576, 10.7063 )
 resource_name = "Hit"
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/path = NodePath("Body:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -137,16 +139,65 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 35 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "LvlUP",
+"speed": 5.0
+} ]
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 516.851, 321.156 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="Body" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -2 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "idle_down"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -161,8 +212,19 @@ cast_to = Vector2( 0, 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hit = SubResource( 3 )
+
+[node name="PlayerEffects" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( -9.60013e-06, -4.69688 )
+scale = Vector2( 1.35077, 1.35537 )
+frames = SubResource( 12 )
+animation = "LvlUP"
+playing = true
+script = ExtResource( 36 )
+[connection signal="player_level_up" from="." to="PlayerEffects" method="_on_Player_player_level_up"]
 [connection signal="player_level_up" from="." to="GUI" method="_on_Player_player_level_up"]
 [connection signal="player_stats_changed" from="." to="GUI" method="_on_Player_player_stats_changed"]
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="Body" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="animation_finished" from="PlayerEffects" to="PlayerEffects" method="_on_PlayerEffects_animation_finished"]
 
 [editable path="GUI"]

@@ -81,12 +81,12 @@ func animates_player(direction: Vector2):
 		var animation = "walk_" + get_animation_direction(last_direction)
 		
 		# Play the walk animation
-		$AnimatedSprite.frames.set_animation_speed(animation, 2 + 8 * direction.length())
-		$AnimatedSprite.play(animation)
+		$Body.frames.set_animation_speed(animation, 2 + 8 * direction.length())
+		$Body.play(animation)
 	else:
 		# Choose idle animation based on last movement direction and play it
 		var animation = "idle_" + get_animation_direction(last_direction)
-		$AnimatedSprite.play(animation)
+		$Body.play(animation)
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
@@ -119,7 +119,7 @@ func _input(event):
 			# Play attack animation
 			attack_playing = true
 			var animation = "attack_" + get_animation_direction(last_direction)
-			$AnimatedSprite.play(animation)
+			$Body.play(animation)
 			# Add cooldown time to current time
 			next_attack_time = now + attack_cooldown_time
 	elif event.is_action_pressed("fireball"):
@@ -131,7 +131,7 @@ func _input(event):
 			# Play fireball animation
 			attack_playing = true
 			var animation = "fireball_" + get_animation_direction(last_direction)
-			$AnimatedSprite.play(animation)
+			$Body.play(animation)
 			# Add cooldown time to current time
 			next_fireball_time = now + fireball_cooldown_time
 	elif event.is_action_pressed("drink_health"):
@@ -141,7 +141,7 @@ func _input(event):
 
 func _on_AnimatedSprite_animation_finished():
 	attack_playing = false
-	if $AnimatedSprite.animation.begins_with("fireball_"):
+	if $Body.animation.begins_with("fireball_"):
 		# Instantiate Fireball
 		var fireball = fireball_scene.instance()
 		fireball.attack_damage = fireball_damage

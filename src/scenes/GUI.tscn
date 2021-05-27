@@ -255,20 +255,22 @@ __meta__ = {
 
 [node name="LevelPopup" type="Popup" parent="."]
 pause_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -175.0
-margin_top = -75.0
-margin_right = 175.0
-margin_bottom = 75.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -350.0
+margin_top = 150.0
+margin_bottom = 300.0
+rect_scale = Vector2( 0.7, 0.7 )
 popup_exclusive = true
 script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="LevelPopup"]
 margin_right = 350.0
 margin_bottom = 150.0
+color = Color( 1, 1, 1, 0.509804 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -296,7 +298,7 @@ position = Vector2( 121.089, 84 )
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 11 )
 
-[node name="A" type="Label" parent="LevelPopup/ColorRect"]
+[node name="Q" type="Label" parent="LevelPopup/ColorRect"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 40.0
@@ -305,12 +307,12 @@ margin_right = 80.0
 margin_bottom = 28.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.352941, 0.352941, 0.352941, 1 )
-text = "A"
+text = "Q"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="B" type="Label" parent="LevelPopup/ColorRect"]
+[node name="E" type="Label" parent="LevelPopup/ColorRect"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -321,7 +323,7 @@ margin_right = -30.0
 margin_bottom = 28.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.352941, 0.352941, 0.352941, 1 )
-text = "B"
+text = "E"
 
 [node name="DialoguePopup" type="Popup" parent="."]
 pause_mode = 2
