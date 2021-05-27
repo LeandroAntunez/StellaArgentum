@@ -33,55 +33,35 @@
 [ext_resource path="res://assets/textures/character/player_frames/player_left_attack_1.png" type="Texture" id=31]
 [ext_resource path="res://assets/textures/character/player_frames/player_right_attack_2.png" type="Texture" id=32]
 [ext_resource path="res://assets/textures/character/player_frames/player_down_attack_2.png" type="Texture" id=33]
-[ext_resource path="res://scenes/GUI.tscn" type="PackedScene" id=34]
+[ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=34]
 [ext_resource path="res://assets/textures/effects/LevelUp!.png" type="Texture" id=35]
 [ext_resource path="res://entities/player/PlayerEffects.gd" type="Script" id=36]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "idle_up",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 10.0
+"frames": [ ExtResource( 4 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": false,
+"name": "attack_up",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 22 ), ExtResource( 23 ) ],
 "loop": false,
 "name": "fireball_up",
 "speed": 7.0
 }, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "idle_up",
+"speed": 1.0
+}, {
 "frames": [ ExtResource( 4 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "walk_up",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 28 ), ExtResource( 32 ) ],
-"loop": false,
-"name": "attack_right",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 17 ), ExtResource( 1 ) ],
-"loop": false,
-"name": "fireball_down",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "idle_down",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 25 ), ExtResource( 33 ) ],
 "loop": false,
 "name": "attack_down",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 29 ), ExtResource( 30 ) ],
-"loop": false,
-"name": "attack_up",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
@@ -99,20 +79,40 @@ animations = [ {
 "name": "walk_right",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "idle_right",
-"speed": 1.0
+"name": "walk_left",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 28 ), ExtResource( 32 ) ],
+"loop": false,
+"name": "attack_right",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 24 ), ExtResource( 20 ) ],
 "loop": false,
 "name": "fireball_left",
 "speed": 7.0
 }, {
+"frames": [ ExtResource( 6 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "idle_down",
+"speed": 1.0
+}, {
 "frames": [ ExtResource( 12 ), ExtResource( 19 ), ExtResource( 21 ) ],
 "loop": false,
 "name": "fireball_right",
 "speed": 7.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 17 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "fireball_down",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "idle_right",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 31 ), ExtResource( 27 ) ],
 "loop": false,
@@ -197,7 +197,6 @@ position = Vector2( 0, -2 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "idle_down"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -219,10 +218,11 @@ position = Vector2( -9.60013e-06, -4.69688 )
 scale = Vector2( 1.35077, 1.35537 )
 frames = SubResource( 12 )
 animation = "LvlUP"
+frame = 3
 playing = true
 script = ExtResource( 36 )
-[connection signal="player_level_up" from="." to="PlayerEffects" method="_on_Player_player_level_up"]
 [connection signal="player_level_up" from="." to="GUI" method="_on_Player_player_level_up"]
+[connection signal="player_level_up" from="." to="PlayerEffects" method="_on_Player_player_level_up"]
 [connection signal="player_stats_changed" from="." to="GUI" method="_on_Player_player_stats_changed"]
 [connection signal="animation_finished" from="Body" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="animation_finished" from="PlayerEffects" to="PlayerEffects" method="_on_PlayerEffects_animation_finished"]
