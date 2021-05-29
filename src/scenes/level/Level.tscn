@@ -68,6 +68,7 @@ position = Vector2( 729.845, 622.021 )
 [node name="Audio" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -10.0
 script = ExtResource( 9 )
 [connection signal="death" from="Player" to="Audio/Music" method="_on_Player_death"]
 [connection signal="player_level_up" from="Player" to="GUI" method="_on_Player_player_level_up"]

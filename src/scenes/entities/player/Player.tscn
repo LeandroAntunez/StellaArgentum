@@ -84,6 +84,11 @@ animations = [ {
 "name": "idle_down",
 "speed": 1.0
 }, {
+"frames": [ ExtResource( 21 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "fireball_right",
+"speed": 7.0
+}, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "walk_down",
@@ -94,19 +99,14 @@ animations = [ {
 "name": "attack_right",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 14 ), ExtResource( 29 ), ExtResource( 3 ) ],
 "loop": false,
-"name": "fireball_right",
+"name": "fireball_left",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 8 ), ExtResource( 22 ) ],
 "loop": false,
 "name": "fireball_down",
-"speed": 7.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 29 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "fireball_left",
 "speed": 7.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 28 ), ExtResource( 25 ) ],
@@ -197,6 +197,7 @@ position = Vector2( 0, -2 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "idle_down"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -216,7 +217,7 @@ position = Vector2( -9.60013e-06, -4.69688 )
 scale = Vector2( 1.35077, 1.35537 )
 frames = SubResource( 12 )
 animation = "LvlUP"
-frame = 4
+frame = 5
 playing = true
 script = ExtResource( 24 )
 
@@ -224,8 +225,8 @@ script = ExtResource( 24 )
 script = ExtResource( 36 )
 [connection signal="attack" from="." to="SFX" method="_on_Player_attack"]
 [connection signal="death" from="." to="SFX" method="_on_Player_death"]
-[connection signal="player_level_up" from="." to="SFX" method="_on_Player_player_level_up"]
 [connection signal="player_level_up" from="." to="PlayerEffects" method="_on_Player_player_level_up"]
+[connection signal="player_level_up" from="." to="SFX" method="_on_Player_player_level_up"]
 [connection signal="spell" from="." to="SFX" method="_on_Player_spell"]
 [connection signal="animation_finished" from="Body" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="animation_finished" from="PlayerEffects" to="PlayerEffects" method="_on_PlayerEffects_animation_finished"]

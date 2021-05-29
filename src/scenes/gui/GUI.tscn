@@ -78,6 +78,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="Health"]
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 68.0
+margin_bottom = -2.0
+custom_fonts/font = ExtResource( 14 )
+text = "VIDA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Mana" type="ColorRect" parent="."]
 margin_top = 46.0
 margin_right = 250.0
@@ -98,15 +110,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label" type="Label" parent="Mana"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 81.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 14 )
+text = "MANA"
+
 [node name="XP" type="ColorRect" parent="."]
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -123.0
-margin_top = -118.0
-margin_right = 192.0
-margin_bottom = -24.0
+margin_left = -157.5
+margin_right = 157.5
+margin_bottom = 94.0
 color = Color( 0, 0, 0, 0.627451 )
 script = ExtResource( 9 )
 __meta__ = {
@@ -184,8 +201,8 @@ margin_right = 71.0
 margin_bottom = 25.0
 rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = ExtResource( 14 )
-text = "0"
-align = 2
+text = "1"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

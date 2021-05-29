@@ -45,11 +45,6 @@ animations = [ {
 "name": "right_idle",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 14 ), ExtResource( 23 ) ],
-"loop": false,
-"name": "up_attack",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 24 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "up_walk",
@@ -60,10 +55,10 @@ animations = [ {
 "name": "down_idle",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 30 ), ExtResource( 28 ) ],
+"frames": [ ExtResource( 24 ), ExtResource( 14 ), ExtResource( 23 ) ],
 "loop": false,
-"name": "birth",
-"speed": 7.0
+"name": "up_attack",
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 16 ) ],
 "loop": true,
@@ -80,15 +75,20 @@ animations = [ {
 "name": "down_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "left_walk",
-"speed": 5.0
+"frames": [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 30 ), ExtResource( 28 ) ],
+"loop": false,
+"name": "birth",
+"speed": 7.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 15 ), ExtResource( 18 ) ],
 "loop": false,
 "name": "left_attack",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "left_walk",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 29 ), ExtResource( 20 ), ExtResource( 7 ) ],
 "loop": false,
@@ -134,7 +134,6 @@ position = Vector2( -0.471937, 0 )
 scale = Vector2( 0.957097, 1 )
 frames = SubResource( 1 )
 animation = "down_idle"
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )

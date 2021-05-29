@@ -7,4 +7,5 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_Continue_mouse_entered():
-	get_tree().change_scene_to(scn_game)
+	# hacer consulta
+	get_tree().change_scene_to(scn_game) #pasarle resultados
