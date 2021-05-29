@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/level/Tree.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/entities/item/quest/necklace/Necklace.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/entities/npc/fiona/Fiona.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/level/Music.gd" type="Script" id=9]
 
 [node name="Level" type="Node"]
 
@@ -67,6 +68,8 @@ position = Vector2( 729.845, 622.021 )
 [node name="Audio" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
+script = ExtResource( 9 )
+[connection signal="death" from="Player" to="Audio/Music" method="_on_Player_death"]
 [connection signal="player_level_up" from="Player" to="GUI" method="_on_Player_player_level_up"]
 [connection signal="player_stats_changed" from="Player" to="GUI" method="_on_Player_player_stats_changed"]
 

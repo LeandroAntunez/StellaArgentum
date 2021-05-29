@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/entities/npc/skeleton/Skeleton.gd" type="Script" id=1]
 [ext_resource path="res://scenes/entities/npc/skeleton/skeleton_frames/skeleton_left_walk_1.png" type="Texture" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://scenes/entities/npc/skeleton/skeleton_frames/skeleton_down_idle_1.png" type="Texture" id=29]
 [ext_resource path="res://scenes/entities/npc/skeleton/skeleton_frames/skeleton_death_2.png" type="Texture" id=30]
 [ext_resource path="res://scenes/entities/npc/skeleton/skeleton_frames/skeleton_down_idle_2.png" type="Texture" id=31]
+[ext_resource path="res://scenes/entities/npc/skeleton/SFX.gd" type="Script" id=32]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -44,15 +45,20 @@ animations = [ {
 "name": "right_idle",
 "speed": 1.0
 }, {
+"frames": [ ExtResource( 24 ), ExtResource( 14 ), ExtResource( 23 ) ],
+"loop": false,
+"name": "up_attack",
+"speed": 3.0
+}, {
 "frames": [ ExtResource( 24 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "up_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 24 ), ExtResource( 14 ), ExtResource( 23 ) ],
-"loop": false,
-"name": "up_attack",
-"speed": 3.0
+"frames": [ ExtResource( 29 ), ExtResource( 31 ) ],
+"loop": true,
+"name": "down_idle",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 26 ), ExtResource( 22 ), ExtResource( 30 ), ExtResource( 28 ) ],
 "loop": false,
@@ -64,9 +70,29 @@ animations = [ {
 "name": "left_idle",
 "speed": 1.0
 }, {
+"frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "up_idle",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 8 ), ExtResource( 29 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "down_walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "left_walk",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ), ExtResource( 15 ), ExtResource( 18 ) ],
 "loop": false,
 "name": "left_attack",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 20 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "down_attack",
 "speed": 3.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
@@ -77,31 +103,6 @@ animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 12 ), ExtResource( 27 ) ],
 "loop": true,
 "name": "right_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "left_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 29 ), ExtResource( 31 ) ],
-"loop": true,
-"name": "down_idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 25 ) ],
-"loop": true,
-"name": "up_idle",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 29 ), ExtResource( 20 ), ExtResource( 7 ) ],
-"loop": false,
-"name": "down_attack",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 29 ), ExtResource( 8 ), ExtResource( 29 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "down_walk",
 "speed": 5.0
 } ]
 
@@ -148,6 +149,12 @@ anims/hit = SubResource( 3 )
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 16 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 32 )
+[connection signal="attack" from="." to="SFX" method="_on_Skeleton_attack"]
+[connection signal="death" from="." to="SFX" method="_on_Skeleton_death"]
+[connection signal="hurt" from="." to="SFX" method="_on_Skeleton_hurt"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

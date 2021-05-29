@@ -14,6 +14,8 @@ var mana_max = 100
 var mana_regeneration = 2
 
 # Player inventory
+var actual_weapon = "sword"
+var actual_spell = "fireball"
 enum Potion { HEALTH, MANA }
 var health_potions = 0
 var mana_potions = 0
@@ -41,6 +43,9 @@ onready var animationPlayer = $AnimationPlayer
 # Signals
 signal player_stats_changed
 signal player_level_up
+signal attack
+signal spell
+signal death
 
 func _ready():
 	emit_signal("player_stats_changed", self)
@@ -104,6 +109,7 @@ func _input(event):
 	if event.is_action_pressed("attack"):
 	# Check if player can attack
 		var now = OS.get_ticks_msec()
+		emit_signal("attack", actual_weapon)
 		if now >= next_attack_time:
 			# What's the target?
 			var target = $RayCast2D.get_collider()
@@ -132,6 +138,7 @@ func _input(event):
 			attack_playing = true
 			var animation = "fireball_" + get_animation_direction(last_direction)
 			$Body.play(animation)
+			emit_signal("spell", actual_spell)
 			# Add cooldown time to current time
 			next_fireball_time = now + fireball_cooldown_time
 	elif event.is_action_pressed("drink_health"):
@@ -168,6 +175,7 @@ func hit(damage):
 	if health <= 0:
 		set_process(false)
 		play_animation("Game Over")
+		emit_signal("death")
 	else:
 		play_animation("Hit")
 

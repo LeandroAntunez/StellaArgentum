@@ -5,6 +5,8 @@ var speed = 80
 var direction : Vector2
 var attack_damage
 
+signal explode
+
 func _ready():
 	tilemap = get_tree().root.get_node("Level/Terrain/TerrainTile")
 
@@ -25,15 +27,18 @@ func _on_Fireball_body_entered(body):
 	# If the fireball hit a Skeleton, call the hit() function
 	if body.name.find("Skeleton") >= 0:
 		body.hit(attack_damage)
-	
-	# Stop the movement and explode
-	direction = Vector2.ZERO
-	$AnimatedSprite.play("explode")
+		explode()
+		# Stop the movement and explode
+		direction = Vector2.ZERO
+		explode()
 
+func explode():
+	$Body.play("explode")
+	emit_signal("explode")
 
 func _on_AnimatedSprite_animation_finished():
-	if $AnimatedSprite.animation == "explode":
+	if $Body.animation == "explode":
 		get_tree().queue_delete(self)
 
 func _on_Timer_timeout():
-	$AnimatedSprite.play("explode")
+	explode()

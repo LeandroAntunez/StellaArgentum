@@ -28,6 +28,8 @@ var bounce_countdown = 0
 # Animation variables
 var other_animation_playing = false
 
+signal attack
+signal hurt
 signal death
 
 func _ready():
@@ -43,12 +45,16 @@ func _process(delta):
 		# What's the target?
 		var target = $RayCast2D.get_collider()
 		if target != null and target.name == "Player" and player.health > 0:
-			# Play attack animation
-			other_animation_playing = true
-			var animation = get_animation_direction(last_direction) + "_attack"
-			$AnimatedSprite.play(animation)
+			attack()
 			# Add cooldown time to current time
 			next_attack_time = now + attack_cooldown_time
+
+func attack():
+# Play attack animation
+	other_animation_playing = true
+	var animation = get_animation_direction(last_direction) + "_attack"
+	$AnimatedSprite.play(animation)
+	emit_signal("attack")
 
 func _physics_process(delta):
 	var movement = direction * speed * delta
@@ -131,6 +137,7 @@ func _on_AnimatedSprite_animation_finished():
 func hit(damage):
 	health -= damage
 	if health > 0:
+		emit_signal("hurt")
 		$AnimationPlayer.play("hit")
 	else:
 		$Timer.stop()
