@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Stella Argentum"
 run/main_scene="res://scenes/Main.tscn"
-config/icon="res://assets/main_menu/SA-meteor.jpg"
+config/icon="res://assets/interface/main_menu/SA-meteor.jpg"
 
 [display]
 

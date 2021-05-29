@@ -1,13 +1,14 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/main_menu/SA-title.jpg" type="Texture" id=1]
-[ext_resource path="res://assets/main_menu/label_continue.png" type="Texture" id=2]
-[ext_resource path="res://assets/main_menu/label_new_game.png" type="Texture" id=3]
-[ext_resource path="res://assets/main_menu/label_options.png" type="Texture" id=4]
-[ext_resource path="res://assets/main_menu/SA-meteor.jpg" type="Texture" id=6]
-[ext_resource path="res://assets/main_menu/background.png" type="Texture" id=7]
+[ext_resource path="res://assets/interface/main_menu/SA-title.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/interface/main_menu/label_continue.png" type="Texture" id=2]
+[ext_resource path="res://assets/interface/main_menu/label_new_game.png" type="Texture" id=3]
+[ext_resource path="res://assets/interface/main_menu/label_options.png" type="Texture" id=4]
+[ext_resource path="res://assets/interface/main_menu/SA-meteor.jpg" type="Texture" id=6]
+[ext_resource path="res://assets/interface/main_menu/background.png" type="Texture" id=7]
 [ext_resource path="res://scenes/menu/MainMenu.gd" type="Script" id=8]
 [ext_resource path="res://scenes/level/Level.tscn" type="PackedScene" id=9]
+
 
 [node name="Main" type="Node"]
 script = ExtResource( 8 )
