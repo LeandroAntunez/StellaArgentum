@@ -35,3 +35,9 @@ var next_fireball_time
 var xp
 var xp_next_level
 var level
+
+func load_player(loaded_game):
+	character_name = loaded_game.name
+	x = loaded_game.x
+	y = loaded_game.y
+	

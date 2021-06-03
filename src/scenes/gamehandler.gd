@@ -50,11 +50,24 @@ func save():
 func load():
 	pass
 
+func load_last_game():
+	if (not db.open_db("res://data/player_stats.db")):
+		return;
+	var query = "SELECT * FROM savegame ORDER BY savetime DESC LIMIT 1;"
+	var result = db.fetch_array(query)[0]
+	print(result)
+	if (not result):
+		print("sql syntax error")
+		return;
+	print("sql query completed")
+	db.close()
+	return result
+
 func set_player(aPlayer):
 	player = aPlayer
 
 func parse_datetime():
 	var datetime = OS.get_datetime()
 	var res = str(datetime.year, "-", datetime.month, "-", datetime.day, " ")
-	res += str(datetime.hour, ":", datetime.minute)
+	res += str(datetime.hour, ":", datetime.minute, ":", datetime.second)
 	return res

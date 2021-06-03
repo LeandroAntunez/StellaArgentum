@@ -11,8 +11,9 @@ func _on_New_Game_pressed():
 	get_tree().change_scene_to(new_game) #pasarle resultados
 
 func _on_Continue_pressed():
-	read_last_game_from_db()
-	pass # Replace with function body.
-
-func read_last_game_from_db():
-	pass
+	var last_game = Gamehandler.load_last_game()
+	if not last_game:
+		pass
+	else:
+		GlobalPlayer.load_player(last_game)
+		get_tree().change_scene_to(scn_game)

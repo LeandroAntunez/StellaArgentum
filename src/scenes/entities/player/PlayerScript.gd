@@ -52,6 +52,9 @@ signal pause
 
 func _ready():
 	character_name = GlobalPlayer.character_name
+	if GlobalPlayer.x:
+		position.x = GlobalPlayer.x
+		position.y = GlobalPlayer.y
 	Gamehandler.set_player(self)
 	emit_signal("player_stats_changed", self)
 

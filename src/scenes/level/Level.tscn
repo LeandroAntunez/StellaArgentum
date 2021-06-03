@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/level/Tree.tscn" type="PackedScene" id=2]
@@ -9,8 +9,10 @@
 [ext_resource path="res://scenes/entities/npc/fiona/Fiona.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/level/Music.gd" type="Script" id=9]
+[ext_resource path="res://scenes/level/Level.gd" type="Script" id=10]
 
 [node name="Level" type="Node"]
+script = ExtResource( 10 )
 
 [node name="Terrain" parent="." instance=ExtResource( 3 )]
 
