@@ -10,3 +10,7 @@ func _on_Player_player_stats_changed(player):
 
 func _on_Player_player_level_up():
 	get_node("LevelPopup")._on_Player_player_level_up()
+
+
+func _on_Player_pause():
+	get_node("Pause").open_pause_screen()

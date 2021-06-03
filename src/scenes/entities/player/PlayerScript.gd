@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var character_name
+
 # Player movement speed
 export var speed = 75
 var last_direction = Vector2(0, 1)
@@ -46,8 +48,11 @@ signal player_level_up
 signal attack
 signal spell
 signal death
+signal pause
 
 func _ready():
+	character_name = GlobalPlayer.character_name
+	Gamehandler.set_player(self)
 	emit_signal("player_stats_changed", self)
 
 func _physics_process(delta):
@@ -145,6 +150,8 @@ func _input(event):
 		drink_health_potion()
 	elif event.is_action_pressed("drink_mana"):
 		drink_mana_potion()
+	elif event.is_action_pressed("pause"):
+		emit_signal("pause")
 
 func _on_AnimatedSprite_animation_finished():
 	attack_playing = false
@@ -210,3 +217,6 @@ func drink_mana_potion():
 			mana_potions = mana_potions - 1
 			mana = min(mana + 50, mana_max)
 			emit_signal("player_stats_changed", self)
+
+func generate_id():
+	pass

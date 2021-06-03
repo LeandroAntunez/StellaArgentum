@@ -61,6 +61,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Potion" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 550.603, 355.573 )
+type = 0
 
 [node name="Necklace" parent="Items" instance=ExtResource( 6 )]
 position = Vector2( 729.845, 622.021 )
@@ -71,6 +72,7 @@ position = Vector2( 729.845, 622.021 )
 volume_db = -10.0
 script = ExtResource( 9 )
 [connection signal="death" from="Player" to="Audio/Music" method="_on_Player_death"]
+[connection signal="pause" from="Player" to="GUI" method="_on_Player_pause"]
 [connection signal="player_level_up" from="Player" to="GUI" method="_on_Player_player_level_up"]
 [connection signal="player_stats_changed" from="Player" to="GUI" method="_on_Player_player_stats_changed"]
 
