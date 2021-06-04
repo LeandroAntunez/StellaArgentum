@@ -18,7 +18,7 @@ func create_tables():
 
 func create_stats_table():
 	# Open the database
-	if (not db.open_db("res://data/player_stats.db")):
+	if (not db.open_db("res://data/stella_argentum.db")):
 		print("stats: Database not found.")
 		return;
 	# Create table
@@ -46,7 +46,7 @@ func create_stats_table():
 
 func create_savegame_table():
 	# Open the database
-	if (not db.open_db("res://data/player_stats.db")):
+	if (not db.open_db("res://data/stella_argentum.db")):
 		print("savegame: Database not found.")
 		return;
 	# Create table
@@ -63,10 +63,11 @@ func create_savegame_table():
 func save(player):
 	GlobalPlayer.save_stats(player)
 	insert_savegame_table()
-	insert_stats_table()
+	var savegame = load_savegame_table()
+	insert_stats_table(savegame.idsave)
 
 func insert_savegame_table():
-	if (not db.open_db("res://data/player_stats.db")):
+	if (not db.open_db("res://data/stella_argentum.db")):
 		return;
 	var savetime = parse_datetime()
 	var name = player.character_name
@@ -74,23 +75,23 @@ func insert_savegame_table():
 	query = "INSERT INTO savegame (name, savetime) VALUES ('"
 	query += str(name, "', '", savetime, "');")
 	print(query)
-	if (not db.query(query)):
-		print("sql syntax error")
+	var result = db.query(query)
+	if (not result):
+		print("sql syntax error or 0 row founded.")
 		return;
 	print("sql query completed")
 	db.close()
+	return result
 
-func insert_stats_table():
-	var last_game = load_last_game()
-	if (not db.open_db("res://data/player_stats.db")):
+func insert_stats_table(idsave):
+	if (not db.open_db("res://data/stella_argentum.db")):
 		return;
-	var saveID = last_game.idsave
 	var query
 	query = "INSERT INTO stats (saveID, playerName, positionX, positionY, "
 	query += "level, experience, experienceNextLevel, health, healthMax, "
 	query += "healthRegeneration, mana, manaMax, manaRegeneration) VALUES ('"
 	query += str(
-		saveID, "', '", GlobalPlayer.character_name, "', '", GlobalPlayer.x,
+		idsave, "', '", GlobalPlayer.character_name, "', '", GlobalPlayer.x,
 		"', '", GlobalPlayer.y, "', '", GlobalPlayer.level, "', '",
 		GlobalPlayer.xp, "', '", GlobalPlayer.xp_next_level, "', '",
 		GlobalPlayer.health, "', '", GlobalPlayer.health_max, "', '",
@@ -104,7 +105,7 @@ func insert_stats_table():
 	db.close()
 
 func load_all_games():
-	if (not db.open_db("res://data/player_stats.db")):
+	if (not db.open_db("res://data/stella_argentum.db")):
 		return;
 	var query = "SELECT * FROM savegame ORDER BY savetime DESC;"
 	var result = db.fetch_array(query)
@@ -117,7 +118,16 @@ func load_all_games():
 	return result
 
 func load_last_game():
-	if (not db.open_db("res://data/player_stats.db")):
+	var loadedGame = load_savegame_table()
+	print(loadedGame)
+	if loadedGame:
+		var loadedStats = load_stats_table(loadedGame.idsave)
+		print(loadedStats)
+		return loadedStats
+	return loadedGame
+
+func load_savegame_table():
+	if (not db.open_db("res://data/stella_argentum.db")):
 		print("load_last_game: DB doesnt exists")
 		return;
 	var query = "SELECT * FROM savegame ORDER BY savetime DESC LIMIT 1;"
@@ -126,6 +136,20 @@ func load_last_game():
 		print("load_last_game: sql syntax error")
 		return;
 	print("load_last_game: sql query completed")
+	db.close()
+	print(result)
+	return result
+
+func load_stats_table(saveID):
+	if (not db.open_db("res://data/stella_argentum.db")):
+		print("load_stats: DB doesnt exists")
+		return;
+	var query = str("SELECT * FROM stats WHERE saveID = ", saveID," LIMIT 1;")
+	var result = db.fetch_array(query)[0]
+	if (not result):
+		print("load_stats: sql syntax error")
+		return;
+	print("load_stats: sql query completed")
 	db.close()
 	print(result)
 	return result
