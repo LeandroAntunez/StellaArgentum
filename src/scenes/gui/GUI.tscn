@@ -408,6 +408,7 @@ anims/ShowDialogue = SubResource( 2 )
 
 [node name="Pause" type="Popup" parent="."]
 pause_mode = 2
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 popup_exclusive = true
@@ -468,6 +469,9 @@ margin_bottom = 250.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = ExtResource( 14 )
 text = "Save game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Load" type="Button" parent="Pause/ColorRect"]
 margin_left = 264.0

@@ -2,7 +2,7 @@ extends Node
 
 var character_name
 
-# Player movement
+# Player location
 var last_direction
 var x
 var y
@@ -40,4 +40,18 @@ func load_player(loaded_game):
 	character_name = loaded_game.name
 	x = loaded_game.x
 	y = loaded_game.y
-	
+
+func save_stats(player):
+	character_name = player.character_name
+	x = player.position.x
+	y = player.position.y
+	xp = player.xp
+	xp_next_level = player.xp_next_level
+	level = player.level
+	health = player.health
+	health_max = player.health_max
+	health_regeneration = player.health_regeneration
+	mana = player.mana
+	mana_max = player.mana_max
+	mana_regeneration = player.mana_regeneration
+

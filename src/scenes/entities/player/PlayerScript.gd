@@ -154,7 +154,7 @@ func _input(event):
 	elif event.is_action_pressed("drink_mana"):
 		drink_mana_potion()
 	elif event.is_action_pressed("pause"):
-		emit_signal("pause")
+		emit_signal("pause", self)
 
 func _on_AnimatedSprite_animation_finished():
 	attack_playing = false
