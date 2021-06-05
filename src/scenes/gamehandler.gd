@@ -138,7 +138,6 @@ func load_game_with_saveid(idsave):
 	print("load_stats: sql query completed")
 	db.close()
 	print(result)
-	
 
 func load_last_savegame():
 	if (not db.open_db("res://data/stella_argentum.db")):
