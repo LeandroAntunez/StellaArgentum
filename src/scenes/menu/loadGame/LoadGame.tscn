@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/menu/loadGame/LoadGame.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scenes/menu/loadGame/Confirm.gd" type="Script" id=3]
 [ext_resource path="res://scenes/menu/loadGame/Table.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/audio/music/menu/load/Loop_The_Old_Tower_Inn.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://assets/font/Schrödinger.ttf"
@@ -68,6 +69,9 @@ margin_bottom = 90.0
 custom_fonts/font = SubResource( 2 )
 text = "CARGAR PARTIDA"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Description" type="Label" parent="UI/Background"]
 margin_right = 40.0
@@ -177,6 +181,11 @@ margin_right = 191.0
 margin_bottom = -25.0
 custom_fonts/font = SubResource( 11 )
 text = "Cancelar"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -15.0
+autoplay = true
 [connection signal="dataLoaded" from="." to="UI/Background/Table" method="_on_LoadGame_dataLoaded"]
 [connection signal="pressed" from="UI/Background/LoadGame" to="." method="_on_LoadGame_pressed"]
 [connection signal="pressed" from="UI/Background/GoBack" to="." method="_on_GoBack_pressed"]

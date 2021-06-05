@@ -4,12 +4,15 @@
 [ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
+size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
+size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -27,9 +30,8 @@ __meta__ = {
 }
 
 [node name="idsave" type="Label" parent="."]
-margin_top = 3.0
 margin_right = 336.0
-margin_bottom = 20.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -41,9 +43,8 @@ __meta__ = {
 
 [node name="name" type="Label" parent="."]
 margin_left = 340.0
-margin_top = 3.0
 margin_right = 677.0
-margin_bottom = 20.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -55,9 +56,8 @@ __meta__ = {
 
 [node name="savetime" type="Label" parent="."]
 margin_left = 681.0
-margin_top = 3.0
 margin_right = 1017.0
-margin_bottom = 20.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -70,7 +70,7 @@ __meta__ = {
 [node name="Button" type="Button" parent="."]
 margin_left = 1021.0
 margin_right = 1358.0
-margin_bottom = 23.0
+margin_bottom = 33.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 4 )
