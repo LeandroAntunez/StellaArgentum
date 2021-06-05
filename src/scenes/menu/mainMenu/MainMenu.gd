@@ -2,6 +2,7 @@ extends Node
 
 export (PackedScene) var scn_game
 onready var new_game = load("res://scenes/menu/newPlayer/NewPlayer.tscn")
+onready var load_game = load("res://scenes/menu/loadGame/LoadGame.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,3 +18,7 @@ func _on_Continue_pressed():
 	else:
 		GlobalPlayer.load_player(last_game)
 		get_tree().change_scene_to(scn_game)
+
+
+func _on_LoadGame_pressed():
+	get_tree().change_scene_to(load_game)

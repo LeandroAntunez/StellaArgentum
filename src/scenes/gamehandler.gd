@@ -63,7 +63,7 @@ func create_savegame_table():
 func save(player):
 	GlobalPlayer.save_stats(player)
 	insert_savegame_table()
-	var savegame = load_savegame_table()
+	var savegame = load_last_savegame()
 	insert_stats_table(savegame.idsave)
 
 func insert_savegame_table():
@@ -118,7 +118,7 @@ func load_all_games():
 	return result
 
 func load_last_game():
-	var loadedGame = load_savegame_table()
+	var loadedGame = load_last_savegame()
 	print(loadedGame)
 	if loadedGame:
 		var loadedStats = load_stats_table(loadedGame.idsave)
@@ -126,7 +126,21 @@ func load_last_game():
 		return loadedStats
 	return loadedGame
 
-func load_savegame_table():
+func load_game_with_saveid(idsave):
+	if (not db.open_db("res://data/stella_argentum.db")):
+		print("load_stats: DB doesnt exists")
+		return;
+	var query = str("SELECT * FROM savegame WHERE idsave = ", idsave," LIMIT 1;")
+	var result = db.fetch_array(query)[0]
+	if (not result):
+		print("load_stats: sql syntax error")
+		return;
+	print("load_stats: sql query completed")
+	db.close()
+	print(result)
+	
+
+func load_last_savegame():
 	if (not db.open_db("res://data/stella_argentum.db")):
 		print("load_last_game: DB doesnt exists")
 		return;
