@@ -41,30 +41,46 @@ margin_right = 1353.0
 margin_bottom = 40.0
 
 [node name="1" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_right = 333.0
+margin_right = 221.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Número"
 
 [node name="2" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 337.0
-margin_right = 671.0
+margin_left = 225.0
+margin_right = 446.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 text = "Personaje"
 
 [node name="3" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 450.0
+margin_right = 671.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "Nivel"
+
+[node name="4" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
 margin_left = 675.0
-margin_right = 1008.0
+margin_right = 896.0
+margin_bottom = 33.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "Lugar"
+
+[node name="5" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 900.0
+margin_right = 1121.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 text = "Fecha"
 
-[node name="4" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 1012.0
+[node name="6" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
+margin_left = 1125.0
 margin_right = 1346.0
 margin_bottom = 33.0
 size_flags_horizontal = 3

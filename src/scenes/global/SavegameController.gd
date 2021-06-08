@@ -30,11 +30,13 @@ func create_savegame_table():
 	query = "CREATE TABLE IF NOT EXISTS savegame ("
 	query += " idsave INTEGER PRIMARY KEY,"
 	query += " name TEXT NOT NULL,"
+	query += " level INTEGER NOT NULL,"
+	query += " place TEXT NOT NULL,"
 	query += " savetime TEXT NOT NULL);"
 	close_db()
 
-func save(player):
-	GlobalPlayer.save_stats(player)
+func save(aPlayer):
+	GlobalPlayer.save_stats(aPlayer)
 	insert_savegame_table()
 	var savegame = load_last_savegame()
 	StatsController.insert_stats_table(savegame.idsave)
@@ -43,8 +45,10 @@ func insert_savegame_table():
 	open_db()
 	var savetime = parse_datetime()
 	var name = GlobalPlayer.character_name
-	query = "INSERT INTO savegame (name, savetime) VALUES ('"
-	query += str(name, "', '", savetime, "');")
+	var level = GlobalPlayer.level
+	var place = "Forest"
+	query = "INSERT INTO savegame (name, savetime, level, place) VALUES ('"
+	query += str(name, "', '", savetime, "', '", level, "', '", place, "');")
 	print(query)
 	var result = db.query(query)
 	if (not result):
@@ -56,7 +60,7 @@ func insert_savegame_table():
 
 func load_last_savegame():
 	open_db()
-	var query = "SELECT * FROM savegame ORDER BY savetime DESC LIMIT 1;"
+	query = "SELECT * FROM savegame ORDER BY savetime DESC LIMIT 1;"
 	var result = db.fetch_array(query)
 	if (not result):
 		print("load_last_game: sql syntax error")
@@ -68,7 +72,7 @@ func load_last_savegame():
 
 func load_all_games():
 	open_db()
-	var query = "SELECT * FROM savegame ORDER BY savetime DESC;"
+	query = "SELECT * FROM savegame ORDER BY savetime DESC;"
 	var result = db.fetch_array(query)
 	print(result)
 	if (not result):
@@ -89,7 +93,7 @@ func load_last_game():
 
 func load_game_with_saveid(idsave):
 	open_db()
-	var query = str("SELECT * FROM savegame WHERE idsave = ", idsave," LIMIT 1;")
+	query = str("SELECT * FROM savegame WHERE idsave = ", idsave," LIMIT 1;")
 	var result = db.fetch_array(query)[0]
 	if (not result):
 		print("load_stats: sql syntax error")

@@ -18,6 +18,8 @@ func set_data(data: Dictionary):
 	# Changing data of a row
 	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/idsave").text = str(data.idsave)
 	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/name").text = data.name
+	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/level").text = str(data.level)
+	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/place").text = data.place
 	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/savetime").text = data.savetime
 
 func _on_Button_pressed(var idsave):

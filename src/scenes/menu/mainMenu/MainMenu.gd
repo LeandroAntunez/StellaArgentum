@@ -3,7 +3,7 @@ extends Node
 export (PackedScene) var scn_game
 onready var new_game = load("res://scenes/menu/newPlayer/NewPlayer.tscn")
 onready var load_game = load("res://scenes/menu/loadGame/LoadGame.tscn")
-var dataloaded
+var dataloaded: Array = []
 onready var continueButton = $Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue
 onready var loadButton = $Menu/HBoxContainer/VBoxContainer/VBoxContainer/LoadGame
 
@@ -27,6 +27,6 @@ func _on_LoadGame_pressed():
 	get_tree().change_scene_to(load_game)
 
 func disable_load_buttons():
-	if dataloaded != null:
+	if dataloaded.empty():
 		continueButton.disabled = true
 		loadButton.disabled = true

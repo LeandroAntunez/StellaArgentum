@@ -4,15 +4,12 @@
 [ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 32
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -23,15 +20,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
 margin_top = 352.0
-margin_bottom = -393.0
+margin_bottom = -379.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="idsave" type="Label" parent="."]
-margin_right = 336.0
-margin_bottom = 33.0
+margin_top = 10.0
+margin_right = 223.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -42,9 +40,10 @@ __meta__ = {
 }
 
 [node name="name" type="Label" parent="."]
-margin_left = 340.0
-margin_right = 677.0
-margin_bottom = 33.0
+margin_left = 227.0
+margin_top = 10.0
+margin_right = 450.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -54,23 +53,52 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="savetime" type="Label" parent="."]
-margin_left = 681.0
-margin_right = 1017.0
-margin_bottom = 33.0
+[node name="level" type="Label" parent="."]
+margin_left = 454.0
+margin_top = 10.0
+margin_right = 677.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "savetime"
+text = "level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="place" type="Label" parent="."]
+margin_left = 681.0
+margin_top = 10.0
+margin_right = 904.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "place"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="savetime" type="Label" parent="."]
+margin_left = 908.0
+margin_right = 1131.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "savetime
+algo"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 1021.0
+margin_left = 1135.0
 margin_right = 1358.0
-margin_bottom = 33.0
+margin_bottom = 37.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 4 )
