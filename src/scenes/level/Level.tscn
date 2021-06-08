@@ -28,6 +28,9 @@ current = true
 
 [node name="GUI" parent="." instance=ExtResource( 8 )]
 
+[node name="Pause" parent="GUI" index="8"]
+visible = false
+
 [node name="NPCs" type="Node2D" parent="."]
 
 [node name="Enemy" type="Node2D" parent="NPCs"]

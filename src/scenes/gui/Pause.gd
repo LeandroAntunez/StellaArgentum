@@ -11,7 +11,7 @@ func open_pause_screen(player):
 	popup()
 	set_process_input(true)
 	get_tree().paused = true
-
+	
 func _on_Continue_pressed():
 	hide()
 	get_tree().paused = false

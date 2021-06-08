@@ -54,7 +54,8 @@ func _ready():
 	character_name = GlobalPlayer.character_name
 	if GlobalPlayer.x:
 		GlobalPlayer.load_stats(self)
-	Gamehandler.set_player(self)
+	else:
+		Gamehandler.set_player(self)
 	emit_signal("player_stats_changed", self)
 
 func _physics_process(delta):

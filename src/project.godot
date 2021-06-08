@@ -23,6 +23,8 @@ config/icon="res://assets/interface/main_menu/SA-meteor.jpg"
 
 Gamehandler="*res://scenes/gamehandler.gd"
 GlobalPlayer="*res://scenes/entities/player/GlobalPlayer.gd"
+SavegameController="*res://scenes/global/SavegameController.gd"
+StatsController="*res://scenes/global/StatsController.gd"
 
 [display]
 
