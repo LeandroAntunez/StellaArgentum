@@ -4,12 +4,13 @@
 [ext_resource path="res://scenes/level/Tree.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level/Terrain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entities/npc/skeleton/Skeleton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/entities/item/consumable/potion/Potion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/item/equipable/consumable/potion/Potion.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/entities/item/quest/necklace/Necklace.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/entities/npc/fiona/Fiona.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/level/Music.gd" type="Script" id=9]
 [ext_resource path="res://scenes/level/Level.gd" type="Script" id=10]
+
 
 [node name="Level" type="Node"]
 script = ExtResource( 10 )

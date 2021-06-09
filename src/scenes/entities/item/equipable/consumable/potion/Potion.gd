@@ -1,5 +1,5 @@
 tool
-extends Area2D
+extends "res://scenes/entities/item/Item.gd"
 
 enum Potion { HEALTH, MANA }
 export(Potion) var type = Potion.HEALTH
