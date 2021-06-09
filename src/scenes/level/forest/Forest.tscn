@@ -1,16 +1,15 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/level/Tree.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/level/Terrain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/level/forest/Tree.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/level/forest/Terrain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entities/npc/skeleton/Skeleton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/entities/item/equipable/consumable/potion/Potion.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/entities/item/quest/necklace/Necklace.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/entities/npc/fiona/Fiona.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/level/Music.gd" type="Script" id=9]
-[ext_resource path="res://scenes/level/Level.gd" type="Script" id=10]
-
+[ext_resource path="res://scenes/level/forest/Music.gd" type="Script" id=9]
+[ext_resource path="res://scenes/level/forest/Forest.gd" type="Script" id=10]
 
 [node name="Level" type="Node"]
 script = ExtResource( 10 )
@@ -28,9 +27,6 @@ position = Vector2( 25.8166, 15.7145 )
 current = true
 
 [node name="GUI" parent="." instance=ExtResource( 8 )]
-
-[node name="Pause" parent="GUI" index="8"]
-visible = false
 
 [node name="NPCs" type="Node2D" parent="."]
 
@@ -67,7 +63,6 @@ scale = Vector2( 2, 2 )
 
 [node name="Potion" parent="Items" instance=ExtResource( 5 )]
 position = Vector2( 550.603, 355.573 )
-type = 0
 
 [node name="Necklace" parent="Items" instance=ExtResource( 6 )]
 position = Vector2( 729.845, 622.021 )

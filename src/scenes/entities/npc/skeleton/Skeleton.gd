@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # Reference to potion scene
-var potion_scene = preload("res://scenes/entities/item/consumable/potion/Potion.tscn")
+var potion_scene = preload("res://scenes/entities/item/equipable/consumable/potion/Potion.tscn")
 
 # Skeleton stats
 var health = 100

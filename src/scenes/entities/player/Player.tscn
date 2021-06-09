@@ -39,21 +39,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "idle_up",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "idle_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 30 ), ExtResource( 35 ) ],
-"loop": false,
-"name": "attack_down",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 17 ), ExtResource( 26 ), ExtResource( 27 ) ],
 "loop": false,
 "name": "attack_up",
@@ -64,9 +49,24 @@ animations = [ {
 "name": "fireball_up",
 "speed": 7.0
 }, {
+"frames": [ ExtResource( 11 ), ExtResource( 30 ), ExtResource( 35 ) ],
+"loop": false,
+"name": "attack_down",
+"speed": 7.0
+}, {
 "frames": [ ExtResource( 11 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "idle_down",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "idle_up",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "idle_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 21 ), ExtResource( 6 ), ExtResource( 4 ) ],
@@ -104,11 +104,6 @@ animations = [ {
 "name": "fireball_left",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 21 ), ExtResource( 31 ), ExtResource( 32 ) ],
-"loop": false,
-"name": "attack_right",
-"speed": 7.0
-}, {
 "frames": [ ExtResource( 21 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "idle_right",
@@ -117,6 +112,11 @@ animations = [ {
 "frames": [ ExtResource( 14 ), ExtResource( 28 ), ExtResource( 25 ) ],
 "loop": false,
 "name": "attack_left",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 31 ), ExtResource( 32 ) ],
+"loop": false,
+"name": "attack_right",
 "speed": 7.0
 } ]
 
@@ -197,7 +197,6 @@ position = Vector2( 0, -2 )
 scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 1 )
 animation = "idle_down"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -223,10 +222,13 @@ script = ExtResource( 24 )
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 script = ExtResource( 36 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 [connection signal="attack" from="." to="SFX" method="_on_Player_attack"]
 [connection signal="death" from="." to="SFX" method="_on_Player_death"]
-[connection signal="player_level_up" from="." to="SFX" method="_on_Player_player_level_up"]
 [connection signal="player_level_up" from="." to="PlayerEffects" method="_on_Player_player_level_up"]
+[connection signal="player_level_up" from="." to="SFX" method="_on_Player_player_level_up"]
 [connection signal="spell" from="." to="SFX" method="_on_Player_spell"]
 [connection signal="animation_finished" from="Body" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="animation_finished" from="PlayerEffects" to="PlayerEffects" method="_on_PlayerEffects_animation_finished"]

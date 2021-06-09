@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var level_one = load("res://scenes/level/Level.tscn")
+onready var level_one = load("res://scenes/level/forest/Forest.tscn")
 onready var main_menu = load("res://scenes/menu/mainMenu/MainMenu.tscn")
 var data: Array
 var saveid_selected

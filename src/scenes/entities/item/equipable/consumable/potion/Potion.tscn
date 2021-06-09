@@ -3,7 +3,6 @@
 [ext_resource path="res://scenes/entities/item/equipable/consumable/potion/Potion.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/item/consumable/potion/small_potions.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3.53568, 4.03306 )
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var level_one = load("res://scenes/level/Level.tscn")
+onready var level_one = load("res://scenes/level/forest/Forest.tscn")
 onready var main_menu = load("res://scenes/menu/mainMenu/MainMenu.tscn")
 onready var input = $UI/Background/PanelInput/Input
 var regEx_rule = "^(?=.{2,16}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"

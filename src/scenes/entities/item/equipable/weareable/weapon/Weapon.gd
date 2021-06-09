@@ -1,6 +1,7 @@
-extends "res://scenes/entities/item/Item.gd"
-enum DROPOFF { Pobre, Comun, Raro, Unico, Epico, Legendario }
-export(DROPOFF) var rarity
+extends "res://scenes/entities/item/equipable/Equipable.gd"
+enum SLOT { Derecha, Izquierda, DosManos }
+export(SLOT) var slot
+
 export (int) var minDamage
 export (int) var maxDamage
 export (int) var cooldown

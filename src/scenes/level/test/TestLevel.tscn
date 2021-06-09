@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/entities/item/equipable/weareable/weapon/sword/Sword.tscn" type="PackedScene" id=3]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Sword" parent="." instance=ExtResource( 3 )]
+position = Vector2( 600, 400 )
+scale = Vector2( 4, 4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 5, 5 )
+
+[node name="GUI" parent="." instance=ExtResource( 2 )]

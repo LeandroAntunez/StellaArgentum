@@ -1,5 +1,5 @@
 tool
-extends "res://scenes/entities/item/Item.gd"
+extends "res://scenes/entities/item/equipable/consumable/Consumable.gd"
 
 enum Potion { HEALTH, MANA }
 export(Potion) var type = Potion.HEALTH

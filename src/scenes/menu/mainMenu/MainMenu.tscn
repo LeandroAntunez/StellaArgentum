@@ -7,9 +7,11 @@
 [ext_resource path="res://assets/interface/main_menu/label_options.png" type="Texture" id=5]
 [ext_resource path="res://assets/interface/main_menu/background.png" type="Texture" id=6]
 [ext_resource path="res://scenes/menu/mainMenu/MainMenu.gd" type="Script" id=7]
-[ext_resource path="res://scenes/level/Level.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/level/forest/Forest.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://assets/audio/music/menu/main/little town - orchestral.ogg" type="AudioStream" id=10]
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 45
