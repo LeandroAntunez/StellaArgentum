@@ -1,8 +1,8 @@
 extends "res://addons/gut/test.gd"
 
-var Player = preload("res://scenes/level/PlayerScript.gd")
-var PlayerScene = preload("res://scenes/level/Player.tscn")
-var APotion = preload("res://entities/potion/Potion.gd")
+var Player = preload("res://scenes/entities/player/PlayerScript.gd")
+var PlayerScene = preload("res://scenes/entities/player/Player.tscn")
+var APotion = preload("res://scenes/entities/item/consumable/potion/Potion.gd")
 
 func test_player_initial_health_is_100():
 	var _playerScene
