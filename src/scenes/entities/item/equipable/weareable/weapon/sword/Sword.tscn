@@ -1,16 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/entities/item/equipable/weareable/weapon/sword/Sword.gd" type="Script" id=1]
-[ext_resource path="res://assets/textures/item/equipable/weareable/weapon/sword/upg_sword.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/item/equipable/weareable/weapon/Iron Sword.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-[node name="Sword" type="Area2D"]
+[node name="Sword" type="Node2D"]
+z_index = 1
 script = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.375, 0.375 )
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 16.0
+margin_bottom = 16.0
+mouse_filter = 2
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
