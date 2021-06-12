@@ -25,6 +25,7 @@ Gamehandler="*res://scenes/gamehandler.gd"
 GlobalPlayer="*res://scenes/entities/player/GlobalPlayer.gd"
 SavegameController="*res://scenes/global/SavegameController.gd"
 StatsController="*res://scenes/global/StatsController.gd"
+JsonData="*res://scenes/global/JSONData.gd"
 
 [display]
 

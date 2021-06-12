@@ -19,3 +19,15 @@ texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="TextureRect"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 24.0
+margin_bottom = 18.0
+text = "99"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
