@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # Reference to potion scene
-var potion_scene = preload("res://scenes/entities/item/equipable/consumable/potion/Potion.tscn")
+var potion_scene = preload("res://scenes/entities/item/potion/Potion.tscn")
 
 # Skeleton stats
 var health = 100
@@ -96,8 +96,8 @@ func _on_Timer_timeout():
 	if bounce_countdown > 0:
 		bounce_countdown = bounce_countdown - 1
 
-func get_animation_direction(direction: Vector2):
-	var norm_direction = direction.normalized()
+func get_animation_direction(aDirection: Vector2):
+	var norm_direction = aDirection.normalized()
 	if norm_direction.y >= 0.707:
 		return "down"
 	elif norm_direction.y <= -0.707:

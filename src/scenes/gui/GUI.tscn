@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/interface/GUI/health_bonus.png" type="Texture" id=1]
 [ext_resource path="res://scenes/gui/Pause.gd" type="Script" id=2]
@@ -14,9 +14,29 @@
 [ext_resource path="res://scenes/gui/LevelPopup.gd" type="Script" id=12]
 [ext_resource path="res://scenes/gui/DialoguePopup.gd" type="Script" id=13]
 [ext_resource path="res://assets/font/Font.tres" type="DynamicFont" id=14]
+[ext_resource path="res://scenes/menu/inventory/Inventory.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/menu/inventory/Hotbar.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=17]
 
-[sub_resource type="Animation" id=1]
-resource_name = "game over"
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 17 )
+
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -30,8 +50,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "ShowDialogue"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect/Dialogue:percent_visible")
 tracks/0/interp = 1
@@ -57,12 +76,32 @@ tracks/1/keys = {
 "values": [ 0.0, 0.0, 1.0 ]
 }
 
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=10]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=13]
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 17 )
+
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 5 )
 
 [node name="Health" type="ColorRect" parent="."]
-margin_right = 250.0
-margin_bottom = 40.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 176.0
 color = Color( 0, 0, 0, 0.627451 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -72,7 +111,7 @@ __meta__ = {
 [node name="Bar" type="ColorRect" parent="Health"]
 margin_left = 6.0
 margin_top = 5.0
-margin_right = 246.0
+margin_right = 168.0
 margin_bottom = 35.0
 color = Color( 1, 0.196078, 0.196078, 1 )
 __meta__ = {
@@ -85,16 +124,19 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 68.0
 margin_bottom = -2.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 1 )
 text = "VIDA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Mana" type="ColorRect" parent="."]
-margin_top = 46.0
-margin_right = 250.0
-margin_bottom = 86.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -192.0
+margin_top = -40.0
 color = Color( 0, 0, 0, 0.627451 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -102,10 +144,8 @@ __meta__ = {
 }
 
 [node name="Bar" type="ColorRect" parent="Mana"]
-margin_left = 6.0
-margin_top = 5.0
-margin_right = 246.0
-margin_bottom = 35.0
+margin_right = 192.0
+margin_bottom = 38.0
 color = Color( 0.129412, 0.501961, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -116,7 +156,7 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = 81.0
 margin_bottom = 38.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 2 )
 text = "MANA"
 
 [node name="XP" type="ColorRect" parent="."]
@@ -125,7 +165,7 @@ anchor_right = 0.5
 margin_left = -157.5
 margin_right = 157.5
 margin_bottom = 94.0
-color = Color( 0, 0, 0, 0.627451 )
+color = Color( 0, 0, 0, 0.196078 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -137,7 +177,7 @@ margin_left = 3.0
 margin_top = 11.0
 margin_right = 51.0
 margin_bottom = 39.3
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 3 )
 text = "XP:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -148,7 +188,7 @@ margin_left = 3.0
 margin_top = 52.0
 margin_right = 64.0
 margin_bottom = 85.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 4 )
 text = "LVL:"
 
 [node name="ValueXP" type="Label" parent="XP"]
@@ -156,7 +196,7 @@ margin_left = 130.0
 margin_top = 11.0
 margin_right = 219.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 5 )
 text = "0/100"
 align = 2
 __meta__ = {
@@ -168,7 +208,7 @@ margin_left = 130.0
 margin_top = 52.0
 margin_right = 180.0
 margin_bottom = 85.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 6 )
 text = "1"
 align = 2
 __meta__ = {
@@ -176,21 +216,21 @@ __meta__ = {
 }
 
 [node name="HealthPotions" type="ColorRect" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -438.728
-margin_top = 5.66968
-margin_right = -248.728
-margin_bottom = 105.67
-color = Color( 0, 0, 0, 0.627451 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = -88.0
+margin_right = 144.0
+margin_bottom = -40.0
+color = Color( 0, 0, 0, 0.196078 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HealthIcon" type="Sprite" parent="HealthPotions"]
-position = Vector2( 33, 42 )
-scale = Vector2( 4, 5 )
+position = Vector2( 40, 24 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 16, 16 )
@@ -210,20 +250,22 @@ __meta__ = {
 
 [node name="ManaPotions" type="ColorRect" parent="."]
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-margin_left = -196.688
-margin_top = 6.0
-margin_right = -6.68774
-margin_bottom = 106.0
-color = Color( 0, 0, 0, 0.627451 )
+anchor_bottom = 1.0
+margin_left = -184.0
+margin_top = -88.0
+margin_right = -40.0
+margin_bottom = -40.0
+color = Color( 0, 0, 0, 0.196078 )
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ManaIcon" type="Sprite" parent="ManaPotions"]
-position = Vector2( 32, 42 )
-scale = Vector2( 4, 5 )
+position = Vector2( 32, 24 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 region_enabled = true
 region_rect = Rect2( 16, 0, 16, 16 )
@@ -242,6 +284,7 @@ __meta__ = {
 }
 
 [node name="GameOver" type="ColorRect" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -269,7 +312,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
-"anims/game over" = SubResource( 1 )
+"anims/game over" = SubResource( 7 )
 
 [node name="LevelPopup" type="Popup" parent="."]
 pause_mode = 2
@@ -404,7 +447,7 @@ text = "[A] SI [B] NO"
 percent_visible = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DialoguePopup"]
-anims/ShowDialogue = SubResource( 2 )
+anims/ShowDialogue = SubResource( 8 )
 
 [node name="Pause" type="Popup" parent="."]
 pause_mode = 2
@@ -421,22 +464,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -400.0
-margin_top = -275.0
-margin_right = 400.0
-margin_bottom = 275.0
+margin_left = -224.0
+margin_top = -204.0
+margin_right = 216.0
+margin_bottom = 196.0
 size_flags_horizontal = 9
 color = Color( 0, 0, 0, 0.196078 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PauseLabel" type="Label" parent="Pause/ColorRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -90.0
-margin_top = 20.0
-margin_right = 5.0
-margin_bottom = 53.0
+margin_left = -76.0
+margin_top = 24.0
+margin_right = 4.0
+margin_bottom = 41.0
 rect_scale = Vector2( 2, 2 )
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 9 )
 text = "PAUSE"
 align = 1
 valign = 1
@@ -447,12 +493,12 @@ __meta__ = {
 [node name="Continue" type="Button" parent="Pause/ColorRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -112.0
-margin_top = 123.0
-margin_right = 39.0
-margin_bottom = 162.0
+margin_left = -76.0
+margin_top = 88.0
+margin_right = 31.0
+margin_bottom = 115.0
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 10 )
 text = "Continue"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -461,48 +507,53 @@ __meta__ = {
 [node name="Save" type="Button" parent="Pause/ColorRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -136.0
-margin_top = 211.0
-margin_right = 51.0
-margin_bottom = 250.0
+margin_left = -76.0
+margin_top = 152.0
+margin_right = 31.0
+margin_bottom = 175.0
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 11 )
 text = "Save game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Load" type="Button" parent="Pause/ColorRect"]
-margin_left = 264.0
-margin_top = 299.0
-margin_right = 448.0
-margin_bottom = 338.0
+margin_left = 144.0
+margin_top = 216.0
+margin_right = 251.0
+margin_bottom = 239.0
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 12 )
 text = "Load game"
 
 [node name="Options" type="Button" parent="Pause/ColorRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -96.0
-margin_top = 379.0
-margin_right = 36.0
-margin_bottom = 418.0
+margin_left = -76.0
+margin_top = 280.0
+margin_right = 31.0
+margin_bottom = 303.0
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 13 )
 text = "Options"
 
 [node name="Exit" type="Button" parent="Pause/ColorRect"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -56.0
-margin_top = 467.0
-margin_right = 19.0
-margin_bottom = 506.0
+margin_left = -76.0
+margin_top = 344.0
+margin_right = 31.0
+margin_bottom = 367.0
 rect_scale = Vector2( 1.5, 1.5 )
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = SubResource( 14 )
 text = "Exit"
+
+[node name="Inventory" parent="." instance=ExtResource( 15 )]
+
+[node name="Hotbar" parent="." instance=ExtResource( 16 )]
 [connection signal="animation_finished" from="DialoguePopup/AnimationPlayer" to="DialoguePopup" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="Pause/ColorRect/Continue" to="Pause" method="_on_Continue_pressed"]
 [connection signal="pressed" from="Pause/ColorRect/Save" to="Pause" method="_on_Save_pressed"]
+[connection signal="pressed" from="Pause/ColorRect/Load" to="Pause" method="_on_Load_pressed"]
 [connection signal="pressed" from="Pause/ColorRect/Exit" to="Pause" method="_on_Exit_pressed"]

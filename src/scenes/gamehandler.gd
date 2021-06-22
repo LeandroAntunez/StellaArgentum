@@ -18,8 +18,8 @@ func create_tables():
 	SavegameController.create_savegame_table()
 	StatsController.create_stats_table()
 
-func save(player):
-	SavegameController.save(player)
+func save(aPlayer):
+	SavegameController.save(aPlayer)
 
 func insert_savegame_table():
 	SavegameController.insert_savegame_table()

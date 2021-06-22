@@ -49,6 +49,7 @@ signal attack
 signal spell
 signal death
 signal pause
+signal inventory_open
 
 func _ready():
 	character_name = GlobalPlayer.character_name
@@ -114,7 +115,14 @@ func get_animation_direction(direction: Vector2):
 	return "down"
 
 func _input(event):
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("inventory"):
+		emit_signal("inventory_open")
+	if event.is_action_pressed("pickup"):
+		if $PickupZone.items_in_range.size() > 0:
+			var pickup_item = $PickupZone.items_in_range.values()[0]
+			pickup_item.pick_up_item(self)
+			$PickupZone.items_in_range.erase(pickup_item)
+	elif event.is_action_pressed("attack"):
 	# Check if player can attack
 		var now = OS.get_ticks_msec()
 		emit_signal("attack", actual_weapon)
@@ -223,3 +231,9 @@ func drink_mana_potion():
 
 func generate_id():
 	pass
+
+func _on_item_entered(item):
+	$PickupZone._on_PickupZone_body_entered(item)
+
+func _on_item_exited(item):
+	$PickupZone._on_PickupZone_body_exited(item)

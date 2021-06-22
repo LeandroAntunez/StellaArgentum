@@ -1,16 +1,49 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/gui/GUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/entities/item/equipable/weareable/weapon/sword/Sword.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/entities/item/ItemDrop.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/level/test/TestLevel.gd" type="Script" id=6]
 
-[node name="TestLevel" type="Node2D"]
-
-[node name="Sword" parent="." instance=ExtResource( 3 )]
-position = Vector2( 600, 400 )
-scale = Vector2( 4, 4 )
+[node name="Level" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-scale = Vector2( 5, 5 )
+position = Vector2( 400, 300 )
+scale = Vector2( 3, 3 )
+collision_mask = 2
 
-[node name="GUI" parent="." instance=ExtResource( 2 )]
+[node name="ItemDrop" parent="." instance=ExtResource( 2 )]
+position = Vector2( 350, 350 )
+scale = Vector2( 3, 3 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="ItemDrop2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 350, 350 )
+scale = Vector2( 3, 3 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="ItemDrop3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 350, 350 )
+scale = Vector2( 3, 3 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="ItemDrop4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 350, 350 )
+scale = Vector2( 3, 3 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="ItemDrop5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 350, 350 )
+scale = Vector2( 3, 3 )
+collision_layer = 4
+collision_mask = 2
+
+[node name="ItemDrop6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 350, 350 )
+scale = Vector2( 3, 3 )
+collision_layer = 4
+collision_mask = 2

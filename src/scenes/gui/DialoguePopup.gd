@@ -39,5 +39,5 @@ func _input(event):
 			set_process_input(false)
 			npc.talk("B")
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	set_process_input(true)

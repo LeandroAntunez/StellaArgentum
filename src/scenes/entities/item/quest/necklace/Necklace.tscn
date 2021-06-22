@@ -3,6 +3,8 @@
 [ext_resource path="res://scenes/entities/item/quest/necklace/Necklace.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/item/quest/necklace/necklace.png" type="Texture" id=2]
 
+
+
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Necklace" type="Area2D"]

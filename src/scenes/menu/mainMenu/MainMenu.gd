@@ -12,9 +12,6 @@ func _ready():
 	dataloaded = Gamehandler.load_all_games()
 	disable_load_buttons()
 
-func _on_New_Game_pressed():
-	get_tree().change_scene_to(new_game) #pasarle resultados
-
 func _on_Continue_pressed():
 	var last_game = Gamehandler.load_last_game()
 	if not last_game:
@@ -30,3 +27,10 @@ func disable_load_buttons():
 	if dataloaded.empty():
 		continueButton.disabled = true
 		loadButton.disabled = true
+
+func _on_NewGame_pressed():
+	get_tree().change_scene_to(new_game)
+
+
+func _on_Exit_pressed():
+	get_tree().quit()
