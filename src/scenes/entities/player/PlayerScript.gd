@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 var character_name
 
@@ -18,6 +19,7 @@ var mana_regeneration = 2
 # Player inventory
 var actual_weapon = "sword"
 var actual_spell = "fireball"
+export (int) var gold
 enum Potion { HEALTH, MANA }
 var health_potions = 0
 var mana_potions = 0
@@ -41,6 +43,7 @@ var fireball_scene = preload("res://scenes/entities/fireball/Fireball.tscn")
 
 # Sub-nodes
 onready var animationPlayer = $AnimationPlayer
+onready var equip = $GUI/Inventory/EquipSlots.get_children()
 
 # Signals
 signal player_stats_changed
@@ -52,6 +55,8 @@ signal pause
 signal inventory_open
 
 func _ready():
+	position.x = -200
+	position.y = -264
 	character_name = GlobalPlayer.character_name
 	if GlobalPlayer.x:
 		GlobalPlayer.load_stats(self)
@@ -76,7 +81,7 @@ func _physics_process(delta):
 	if attack_playing:
 		movement = 0.3 * movement
 	
-	move_and_collide(movement)
+	var _movement = move_and_collide(movement)
 	
 	# Animate player based on direction
 	if not attack_playing:
@@ -212,6 +217,7 @@ func add_xp(value):
 	# Has the player reached the next level?
 	if xp >= xp_next_level:
 		level += 1
+		xp = xp - xp_next_level
 		xp_next_level *= 2
 		print("1")
 		emit_signal("player_level_up")

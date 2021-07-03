@@ -12,21 +12,60 @@
     "Description": "It smells like medicine."
   },
   "Iron Sword": {
-    "ItemCategory": "Sword",
-    "ItemAttack": 3,
+    "ID": 3,
+    "ItemCategory": "Weapon",
+    "DamageMin": 3,
+    "DamageMax": 8,
     "ItemSpeed": 0.75, 
     "StackSize": 1,
-    "Description": "Quite a rusty sword, but should be able to get the job done."
+    "Description": "Quite a rusty sword, but should be able to get the job done.",
+    "Rarity": "Poor",
+    "BuyValue": 50,
+    "SellValue": 25,
+    "PlusHealth": 0,
+    "PlusMana": 0,
+    "Type": "Sword"
+  },
+  "Profecy Sword": {
+    "ID": 4,
+    "ItemCategory": "Weapon",
+    "DamageMin": 100,
+    "DamageMax": 120,
+    "ItemSpeed": 0.65, 
+    "StackSize": 1,
+    "Description": "A legendary sword from the tales.",
+    "Rarity": "Legendary",
+    "BuyValue": 20000,
+    "SellValue": 1500,
+    "PlusHealth": 200,
+    "PlusMana": 100,
+    "Type": "Sword"
   },
   "Brown Shirt": {
-    "ItemCategory": "Shirt",
+    "ID": 5,
+    "ItemCategory": "Torso",
+    "ArmorPoints": 1,
     "StackSize": 1,
-    "Description": "A brown shirt!!"
+    "Description": "A brown shirt!!",
+    "Rarity": "Poor",
+    "BuyValue": 10,
+    "SellValue": 2,
+    "PlusHealth": 0,
+    "PlusMana": 0,
+    "Type": "Shirt"
   },
   "Blue Jeans": {
-    "ItemCategory": "Pants",
+    "ID": 6,
+    "ItemCategory": "Legs",
+    "ArmorPoints": 1,
     "StackSize": 1,
-    "Description": "Blue jeans!!"
+    "Description": "Blue jeans!!",
+    "Rarity": "Poor",
+    "BuyValue": 10,
+    "SellValue": 2,
+    "PlusHealth": 0,
+    "PlusMana": 0,
+    "Type": "Pants"
   },
   "Brown Boots": {
     "ItemCategory": "Shoes",

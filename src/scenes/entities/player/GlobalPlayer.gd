@@ -20,6 +20,7 @@ var actual_weapon
 var actual_spell
 var health_potions
 var mana_potions
+var gold
 
 # Attack variables
 var attack_cooldown_time

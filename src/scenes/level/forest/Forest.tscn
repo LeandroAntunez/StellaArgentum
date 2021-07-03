@@ -1,14 +1,21 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/level/forest/Tree.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/level/forest/Terrain.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/entities/npc/skeleton/Skeleton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/entities/item/potion/Potion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/entities/item/legs/LegsDrop.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/entities/item/quest/necklace/Necklace.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/entities/npc/fiona/Fiona.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/entities/item/weapon/WeaponDrop.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/level/forest/Music.gd" type="Script" id=9]
 [ext_resource path="res://scenes/level/forest/Forest.gd" type="Script" id=10]
+[ext_resource path="res://scenes/entities/item/torso/TorsoDrop.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 12 )
 
 [node name="Level" type="Node"]
 script = ExtResource( 10 )
@@ -17,8 +24,94 @@ script = ExtResource( 10 )
 
 [node name="Tree" parent="." instance=ExtResource( 2 )]
 
+[node name="Caravan" type="Label" parent="."]
+margin_left = -472.0
+margin_top = -400.0
+margin_right = -3.0
+margin_bottom = -253.0
+custom_fonts/font = SubResource( 1 )
+text = "ZONA INICIAL
+CARAVANA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Forest" type="Label" parent="."]
+margin_left = 224.0
+margin_top = 104.0
+margin_right = 755.0
+margin_bottom = 326.0
+custom_fonts/font = SubResource( 1 )
+text = "BOSQUE
+CON PRIMEROS
+ ENEMIGOS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cave" type="Label" parent="."]
+margin_left = -560.0
+margin_top = 896.0
+margin_right = -91.0
+margin_bottom = 1043.0
+custom_fonts/font = SubResource( 1 )
+text = "MAZMORRA:
+CUEVA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Town" type="Label" parent="."]
+margin_left = 1464.0
+margin_top = 928.0
+margin_right = 1933.0
+margin_bottom = 1075.0
+custom_fonts/font = SubResource( 1 )
+text = "PUEBLITO
+DEL LAGO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Town2" type="Label" parent="."]
+margin_left = 1064.0
+margin_top = -400.0
+margin_right = 1533.0
+margin_bottom = -253.0
+custom_fonts/font = SubResource( 1 )
+text = "BARRICADA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Town3" type="Label" parent="."]
+margin_left = 1680.0
+margin_top = -608.0
+margin_right = 2149.0
+margin_bottom = -461.0
+custom_fonts/font = SubResource( 1 )
+text = "ZONA DEL
+IMPACTO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Town4" type="Label" parent="."]
+margin_left = -808.0
+margin_top = -928.0
+margin_right = -198.0
+margin_bottom = -631.0
+custom_fonts/font = SubResource( 1 )
+text = "DIALOGO
+\"NO TIENE
+SENTIDO VOLVER
+AHORA\""
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 625.066, 356.409 )
+position = Vector2( -200, -264 )
 input_pickable = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -30,19 +123,19 @@ current = true
 [node name="Enemy" type="Node2D" parent="NPCs"]
 
 [node name="Skeleton" parent="NPCs/Enemy" instance=ExtResource( 4 )]
-position = Vector2( 600, 600 )
+position = Vector2( 704, 528 )
 
 [node name="Skeleton6" parent="NPCs/Enemy" instance=ExtResource( 4 )]
-position = Vector2( 681.173, 477.296 )
+position = Vector2( -160, 728 )
 
 [node name="Skeleton7" parent="NPCs/Enemy" instance=ExtResource( 4 )]
-position = Vector2( 545.255, 505.613 )
+position = Vector2( -87.9999, 952 )
 
 [node name="Skeleton2" parent="NPCs/Enemy" instance=ExtResource( 4 )]
-position = Vector2( 803.77, 143.016 )
+position = Vector2( -192, 632 )
 
 [node name="Skeleton5" parent="NPCs/Enemy" instance=ExtResource( 4 )]
-position = Vector2( 935.621, 426.196 )
+position = Vector2( -168, 1040 )
 
 [node name="Skeleton3" parent="NPCs/Enemy" instance=ExtResource( 4 )]
 position = Vector2( 219.43, 541.566 )
@@ -53,20 +146,33 @@ position = Vector2( 381.247, 187.966 )
 [node name="Friend" type="Node2D" parent="NPCs"]
 
 [node name="Fiona" parent="NPCs/Friend" instance=ExtResource( 7 )]
-position = Vector2( 694.604, 265.032 )
+position = Vector2( -88, -320 )
 scale = Vector2( 2, 2 )
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Potion" parent="Items" instance=ExtResource( 5 )]
-position = Vector2( 550.603, 355.573 )
-
 [node name="Necklace" parent="Items" instance=ExtResource( 6 )]
-position = Vector2( 729.845, 622.021 )
+position = Vector2( 696, 1016 )
+
+[node name="WeaponDrop" parent="Items" instance=ExtResource( 8 )]
+position = Vector2( 500, 400 )
+item_name = "Iron Sword"
+
+[node name="TorsoDrop" parent="Items" instance=ExtResource( 11 )]
+position = Vector2( 640, 320 )
+
+[node name="LegsDrop" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( 552, 320 )
+item_name = "Blue Jeans"
+
+[node name="WeaponDrop2" parent="Items" instance=ExtResource( 8 )]
+position = Vector2( 700, 320 )
+item_name = "Profecy Sword"
 
 [node name="Audio" type="Node" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 volume_db = -10.0
 script = ExtResource( 9 )
+
 [connection signal="death" from="Player" to="Audio/Music" method="_on_Player_death"]

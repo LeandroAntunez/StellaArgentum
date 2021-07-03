@@ -7,7 +7,7 @@ var data
 var selectedID
 signal selected
 
-func set_data(data: Dictionary):
+func set_data(rowData: Dictionary):
 	# Add row
 	sn += 1
 	var instance = row.instance()
@@ -16,11 +16,11 @@ func set_data(data: Dictionary):
 	instance.connect("pressed", self, "_on_Button_pressed")
 	
 	# Changing data of a row
-	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/idsave").text = str(data.idsave)
-	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/name").text = data.name
-	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/level").text = str(data.level)
-	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/place").text = data.place
-	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/savetime").text = data.savetime
+	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/idsave").text = str(rowData.idsave)
+	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/name").text = rowData.name
+	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/level").text = str(rowData.level)
+	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/place").text = rowData.place
+	get_node("VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer/"+instance.name+"/savetime").text = rowData.savetime
 
 func _on_Button_pressed(var idsave):
 	emit_signal("selected", int(idsave))

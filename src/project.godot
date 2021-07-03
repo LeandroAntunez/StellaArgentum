@@ -9,19 +9,73 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Controller",
+"language": "GDScript",
+"path": "res://scenes/global/Controller.gd"
+}, {
 "base": "Node2D",
 "class": "Item",
 "language": "GDScript",
 "path": "res://scenes/entities/item/Item.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "ItemDrop",
+"language": "GDScript",
+"path": "res://scenes/entities/item/ItemDrop.gd"
+}, {
+"base": "Node2D",
+"class": "Legs",
+"language": "GDScript",
+"path": "res://scenes/entities/item/legs/Legs.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "LegsDrop",
+"language": "GDScript",
+"path": "res://scenes/entities/item/legs/LegsDrop.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/entities/player/PlayerScript.gd"
+}, {
 "base": "Panel",
 "class": "Slot",
 "language": "GDScript",
 "path": "res://scenes/menu/inventory/Slot.gd"
+}, {
+"base": "Node2D",
+"class": "Torso",
+"language": "GDScript",
+"path": "res://scenes/entities/item/torso/Torso.gd"
+}, {
+"base": "ItemDrop",
+"class": "TorsoDrop",
+"language": "GDScript",
+"path": "res://scenes/entities/item/torso/TorsoDrop.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://scenes/entities/item/weapon/Weapon.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "WeaponDrop",
+"language": "GDScript",
+"path": "res://scenes/entities/item/weapon/WeaponDrop.gd"
 } ]
 _global_script_class_icons={
+"Controller": "",
 "Item": "",
-"Slot": ""
+"ItemDrop": "",
+"Legs": "",
+"LegsDrop": "",
+"Player": "",
+"Slot": "",
+"Torso": "",
+"TorsoDrop": "",
+"Weapon": "",
+"WeaponDrop": ""
 }
 
 [application]
@@ -32,21 +86,24 @@ config/icon="res://assets/interface/main_menu/SA-meteor.jpg"
 
 [autoload]
 
-Gamehandler="*res://scenes/gamehandler.gd"
-GlobalPlayer="*res://scenes/entities/player/GlobalPlayer.gd"
-SavegameController="*res://scenes/global/SavegameController.gd"
-StatsController="*res://scenes/global/StatsController.gd"
 JsonData="*res://scenes/global/JSONData.gd"
+GlobalPlayer="*res://scenes/entities/player/GlobalPlayer.gd"
+ParseItem="*res://scenes/global/ParseItem.gd"
 PlayerInventory="*res://scenes/entities/player/PlayerInventory.gd"
+SlotController="*res://scenes/global/SlotController.gd"
+StatsController="*res://scenes/global/StatsController.gd"
+SavegameController="*res://scenes/global/SavegameController.gd"
+Gamehandler="*res://scenes/gamehandler.gd"
 
 [display]
 
-window/size/width=800
+window/size/width=640
+window/size/height=360
 window/size/always_on_top=true
-window/size/test_width=800
-window/size/test_height=600
+window/size/test_width=640
+window/size/test_height=360
 window/stretch/mode="2d"
-window/stretch/aspect="keep"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 

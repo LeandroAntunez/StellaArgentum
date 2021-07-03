@@ -3,14 +3,17 @@ extends Node2D
 onready var hotbar_slots = $HotbarSlots
 onready var active_item_label = $ActiveItemLabel
 onready var slots = hotbar_slots.get_children()
+signal inventory_pressed
+signal gear_pressed
+signal config_pressed
 
 func _ready():
 #	for i in range(slots.size()):
 #		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]])
 #		slots[i].slot_index = i
-	PlayerInventory.connect("active_item_updated", self, "update_active_item_label")
+	var _activeItem = PlayerInventory.connect("active_item_updated", self, "update_active_item_label")
 	for i in range(slots.size()):
-		PlayerInventory.connect("active_item_updated", slots[i], "refresh_style")
+		var _refreshStyle = PlayerInventory.connect("active_item_updated", slots[i], "refresh_style")
 		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]])
 		slots[i].slotType = Slot.SlotType.HOTBAR
 		slots[i].slot_index = i
@@ -28,7 +31,7 @@ func initialize_hotbar():
 		if PlayerInventory.hotbar.has(i):
 			slots[i].initialize_item(PlayerInventory.hotbar[i][0], PlayerInventory.hotbar[i][1])
 
-func _input(event):
+func _input(_event):
 	if find_parent("GUI").holding_item:
 		find_parent("GUI").holding_item.global_position = get_global_mouse_position()
 
@@ -80,3 +83,11 @@ func left_click_not_holding(slot: Slot):
 	slot.pickFromSlot()
 	find_parent("GUI").holding_item.global_position = get_global_mouse_position()
 
+func _on_Inventory_pressed():
+	emit_signal("inventory_pressed")
+
+func _on_Gear_pressed():
+	emit_signal("gear_pressed")
+
+func _on_Config_pressed():
+	emit_signal("config_pressed")

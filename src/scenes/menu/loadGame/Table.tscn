@@ -1,18 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/menu/loadGame/Table.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/menu/loadGame/Row.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
+size = 12
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 32
+size = 12
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 32
+size = 12
 font_data = ExtResource( 2 )
 
 [node name="Table" type="Control"]
@@ -31,76 +32,87 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
-margin_right = 1360.0
-margin_bottom = 47.0
+margin_right = 640.0
+margin_bottom = 27.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1353.0
-margin_bottom = 40.0
+margin_right = 633.0
+margin_bottom = 20.0
+custom_constants/separation = 10
+alignment = 1
 
 [node name="1" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_right = 221.0
-margin_bottom = 33.0
+margin_right = 96.0
+margin_bottom = 13.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Número"
 
 [node name="2" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 225.0
-margin_right = 446.0
-margin_bottom = 33.0
+margin_left = 106.0
+margin_right = 202.0
+margin_bottom = 13.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 text = "Personaje"
 
 [node name="3" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 450.0
-margin_right = 671.0
-margin_bottom = 33.0
+margin_left = 212.0
+margin_right = 308.0
+margin_bottom = 13.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 text = "Nivel"
 
 [node name="4" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 675.0
-margin_right = 896.0
-margin_bottom = 33.0
+margin_left = 318.0
+margin_right = 414.0
+margin_bottom = 13.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 text = "Lugar"
 
 [node name="5" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 900.0
-margin_right = 1121.0
-margin_bottom = 33.0
+margin_left = 424.0
+margin_right = 520.0
+margin_bottom = 13.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 text = "Fecha"
 
 [node name="6" type="Label" parent="VBoxContainer/PanelContainer/HBoxContainer"]
-margin_left = 1125.0
-margin_right = 1346.0
-margin_bottom = 33.0
+margin_left = 530.0
+margin_right = 626.0
+margin_bottom = 13.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 
 [node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer"]
-margin_top = 51.0
-margin_right = 1360.0
-margin_bottom = 768.0
+margin_top = 31.0
+margin_right = 640.0
+margin_bottom = 360.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PanelContainer2"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1353.0
-margin_bottom = 710.0
+margin_right = 633.0
+margin_bottom = 322.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer2/ScrollContainer"]
-margin_right = 1346.0
-margin_bottom = 703.0
+margin_right = 626.0
+margin_bottom = 315.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Row" parent="VBoxContainer/PanelContainer2/ScrollContainer/VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 626.0
+margin_bottom = 29.0
+custom_constants/separation = 11

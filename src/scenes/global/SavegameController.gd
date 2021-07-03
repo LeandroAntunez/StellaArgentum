@@ -1,106 +1,46 @@
-extends Node
+extends Controller
 
-# SQLite module
-const SQLite = preload("res://lib/gdsqlite.gdns");
+onready var create_table_query = queries["savegame"]["create_table"]
+onready var insert_table_query = queries["savegame"]["insert_table"]
 
-# Variables
-var db;
-var player
-var query
-
-func set_db(database):
-	db = database
-
-func open_db():
-	# Open the database
-	if (not db.open_db("res://data/stella_argentum.db")):
-		print("Database not found.")
-		return;
-
-func close_db():
-	if (not db.query(query)):
-		print("savegame: SQL Syntax error.")
-		return;
-	print("savegame: sql query completed")
-	db.close()
-
-func create_savegame_table():
+func create_table():
 	open_db()
-	# Create table
-	query = "CREATE TABLE IF NOT EXISTS savegame ("
-	query += " idsave INTEGER PRIMARY KEY,"
-	query += " name TEXT NOT NULL,"
-	query += " level INTEGER NOT NULL,"
-	query += " place TEXT NOT NULL,"
-	query += " savetime TEXT NOT NULL);"
+	query = create_table_query
 	close_db()
 
-func save(aPlayer):
+func save(aPlayer: Player):
 	GlobalPlayer.save_stats(aPlayer)
-	insert_savegame_table()
-	var savegame = load_last_savegame()
-	StatsController.insert_stats_table(savegame.idsave)
+	insert_table(parse_datetime(), GlobalPlayer.character_name, GlobalPlayer.level, "Forest")
+	var idsave = select_last().idsave
+	StatsController.insert_stats_table(idsave)
+	SlotController.insert_equip_table(idsave, aPlayer)
 
-func insert_savegame_table():
+func insert_table(savetime, name, level, place):
 	open_db()
-	var savetime = parse_datetime()
-	var name = GlobalPlayer.character_name
-	var level = GlobalPlayer.level
-	var place = "Forest"
-	query = "INSERT INTO savegame (name, savetime, level, place) VALUES ('"
+	query = insert_table_query
 	query += str(name, "', '", savetime, "', '", level, "', '", place, "');")
-	print(query)
-	var result = db.query(query)
-	if (not result):
-		print("sql syntax error or 0 row founded.")
-		return;
-	print("sql query completed")
-	db.close()
-	return result
+	close_db()
 
-func load_last_savegame():
+func select_last():
+	.select_last()
 	open_db()
 	query = "SELECT * FROM savegame ORDER BY savetime DESC LIMIT 1;"
-	var result = db.fetch_array(query)
-	if (not result):
-		print("load_last_game: sql syntax error")
-		return [];
-	print("load_last_game: sql query completed")
-	db.close()
-	print(result[0])
-	return result[0]
+	return first_result()
 
-func load_all_games():
+func select_all():
+	.select_all()
 	open_db()
 	query = "SELECT * FROM savegame ORDER BY savetime DESC;"
-	var result = db.fetch_array(query)
-	print(result)
-	if (not result):
-		print("sql syntax error")
-		return [];
-	print("sql query completed")
-	db.close()
-	return result
+	return all_results()
 
 func load_last_game():
-	var loadedGame = load_last_savegame()
-	print(loadedGame)
-	if loadedGame:
-		var loadedStats = StatsController.load_stats_table(loadedGame.idsave)
-		print(loadedStats)
-		return loadedStats
-	return loadedGame
+	return select_last()
 
-func load_game_with_saveid(idsave):
+func select_with_id(idsave):
+	.select_with_id(idsave)
 	open_db()
 	query = str("SELECT * FROM savegame WHERE idsave = ", idsave," LIMIT 1;")
-	var result = db.fetch_array(query)[0]
-	if (not result):
-		print("load_stats: sql syntax error")
-		return;
-	print("load_stats: sql query completed")
-	db.close()
-	print(result)
+	return first_result()
 
 func parse_datetime():
 	var datetime = OS.get_datetime()

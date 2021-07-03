@@ -11,7 +11,7 @@ func _ready():
 	emit_signal("dataLoaded", data)
 
 func _on_GoBack_pressed():
-	get_tree().change_scene_to(main_menu)
+	var _scene = get_tree().change_scene_to(main_menu)
 
 func _on_LoadGame_pressed():
 	var game_to_load
@@ -21,7 +21,7 @@ func _on_LoadGame_pressed():
 			game_to_load = data[game]
 			stats_to_load = Gamehandler.load_stats_table(game_to_load.idsave)
 			GlobalPlayer.load_player(stats_to_load)
-			get_tree().change_scene_to(level_one)
+			var _scene = get_tree().change_scene_to(level_one)
 	# BUSCAR EL QUE TENGA EL ID SELECCIONADO EN DATA
 
 func _on_Accept_pressed():

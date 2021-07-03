@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var level_one = load("res://scenes/level/forest/Forest.tscn")
+onready var introduction = load("res://scenes/menu/newPlayer/introduction/Introduction.tscn")
 onready var main_menu = load("res://scenes/menu/mainMenu/MainMenu.tscn")
 onready var input = $UI/Background/PanelInput/Input
 var regEx_rule = "^(?=.{2,16}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
@@ -22,8 +22,8 @@ func validate_name(name):
 
 func _on_ConfirmCharacterButton_pressed():
 	GlobalPlayer.character_name = input.text
-	get_tree().change_scene_to(level_one)
+	var _scene = get_tree().change_scene_to(introduction)
 
 func _on_Cancel_pressed():
-	get_tree().change_scene_to(main_menu)
+	var _scene = get_tree().change_scene_to(main_menu)
 

@@ -1,9 +1,11 @@
 extends Node
 
 var item_data: Dictionary
+var save_data: Dictionary
 
 func _ready():
 	item_data = LoadData("res://data/ItemData.json")
+	save_data = LoadData("res://data/saveData.json")
 
 func LoadData(file_path):
 	var json_data

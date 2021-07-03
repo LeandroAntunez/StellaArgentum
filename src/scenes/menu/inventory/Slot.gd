@@ -16,9 +16,10 @@ var slot_index
 enum SlotType {
 	HOTBAR = 0,
 	INVENTORY,
-	SHIRT,
-	PANTS,
+	TORSO,
+	LEGS,
 	SHOES,
+	WEAPON
 }
 
 var slotType = null
@@ -58,11 +59,11 @@ func putIntoSlot(new_item):
 	add_child(item)
 	refresh_style()
 
-func initialize_item(item_name, item_quantity):
+func initialize_item(item_name, item_quantity, itemDrop):
 	if item == null:
-		item = ItemClass.instance()
-		add_child(item)
+		item = itemDrop.init_item()
 		item.set_item(item_name, item_quantity)
+		add_child(item)
 	else:
 		item.set_item(item_name, item_quantity)
 	refresh_style()

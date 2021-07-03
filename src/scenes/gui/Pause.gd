@@ -19,7 +19,7 @@ func _on_Continue_pressed():
 
 func _on_Exit_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to(main_menu_scene) #pasarle resultados
+	var _scene = get_tree().change_scene_to(main_menu_scene) #pasarle resultados
 
 func _on_Save_pressed():
 	Gamehandler.save(playerPaused)
@@ -27,4 +27,4 @@ func _on_Save_pressed():
 
 func _on_Load_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to(load_menu_scene) #pasarle resultados
+	var _scene = get_tree().change_scene_to(load_menu_scene) #pasarle resultados

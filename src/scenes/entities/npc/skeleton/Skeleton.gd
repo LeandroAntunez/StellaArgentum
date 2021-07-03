@@ -108,9 +108,9 @@ func get_animation_direction(aDirection: Vector2):
 		return "right"
 	return "down"
 
-func animates_monster(direction: Vector2):
+func animates_monster(aDirection: Vector2):
 	if direction != Vector2.ZERO:
-		last_direction = direction
+		last_direction = aDirection
 		
 		# Choose walk animation based on movement direction
 		var animation = get_animation_direction(last_direction) + "_walk"

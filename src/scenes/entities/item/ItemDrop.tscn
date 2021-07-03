@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/entities/item/ItemDrop.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.41238, 4.98715 )
+extents = Vector2( 8, 8 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Float"
@@ -23,6 +23,8 @@ tracks/0/keys = {
 }
 
 [node name="ItemDrop" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
