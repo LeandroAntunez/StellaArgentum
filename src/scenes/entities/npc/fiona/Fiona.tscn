@@ -1,13 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/entities/npc/fiona/Fiona.gd" type="Script" id=1]
 [ext_resource path="res://assets/textures/character/npc/fiona/npc_idle_1.png" type="Texture" id=2]
 [ext_resource path="res://assets/textures/character/npc/fiona/npc_talk.png" type="Texture" id=3]
 [ext_resource path="res://assets/textures/character/npc/fiona/npc_idle_2.png" type="Texture" id=4]
-[ext_resource path="res://assets/textures/effects/npc/SubReward.png" type="Texture" id=5]
-[ext_resource path="res://assets/textures/effects/npc/MainReward.png" type="Texture" id=6]
-[ext_resource path="res://assets/textures/effects/npc/MainQuest.png" type="Texture" id=7]
-[ext_resource path="res://assets/textures/effects/npc/SubQuest.png" type="Texture" id=8]
+[ext_resource path="res://scenes/gui/questSign/QuestSign.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -25,139 +22,11 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4.63491, 7 )
 
-[sub_resource type="AtlasTexture" id=3]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=4]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=5]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=6]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=10]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=11]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 5 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=17]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=18]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=19]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 7 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="SpriteFrames" id=23]
-animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
-"loop": true,
-"name": "mainreward",
-"speed": 7.0
-}, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
-"name": "subreward",
-"speed": 7.0
-}, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
-"loop": true,
-"name": "subquest",
-"speed": 7.0
-}, {
-"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
-"loop": true,
-"name": "mainquest",
-"speed": 7.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "questcomplete",
-"speed": 5.0
-} ]
-
 [node name="Fiona" type="StaticBody2D" groups=[
 "NPCs",
 ]]
 pause_mode = 2
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 1.5, 1.7 )
 script = ExtResource( 1 )
 
 [node name="Body" type="AnimatedSprite" parent="."]
@@ -168,10 +37,5 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
-[node name="QuestSign" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.3, 0.3 )
-frames = SubResource( 23 )
-animation = "subquest"
-frame = 3
-playing = true
-offset = Vector2( 0, -30 )
+[node name="QuestSign" parent="." instance=ExtResource( 5 )]
+frame = 0

@@ -7,6 +7,7 @@ var saveid_selected
 signal dataLoaded
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	handle_audio()
 	data = Gamehandler.load_all_games()
 	emit_signal("dataLoaded", data)
 
@@ -29,3 +30,9 @@ func _on_Accept_pressed():
 
 func _on_Table_selected(saveid):
 	saveid_selected = saveid
+
+func handle_audio():
+	if Gamehandler.playMusic:
+		$BGM.play()
+	else:
+		$BGM.stop()

@@ -21,7 +21,8 @@ func insert_stats_table(idsave):
 		"', '", GlobalPlayer.health_max, "', '",
 		GlobalPlayer.health_regeneration, "', '", GlobalPlayer.mana, "', '",
 		GlobalPlayer.mana_max, "', '", GlobalPlayer.mana_regeneration,
-		"');")
+		"', '", GlobalPlayer.attributte_points, "', '",
+		GlobalPlayer.armor, "');")
 	close_db()
 
 func load_stats_table(saveID):

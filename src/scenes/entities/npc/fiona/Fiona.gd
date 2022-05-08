@@ -6,11 +6,16 @@ var dialogue_state = 0
 var necklace_found = false
 var dialoguePopup
 var player
-enum Potion { HEALTH, MANA }
+var questHandler
+var healthPotion
+const POTION = preload("res://scenes/entities/item/consumable/Consumable.tscn")
 
 func _ready():
 	dialoguePopup = get_tree().root.get_node("Level/Player/GUI/DialoguePopup")
 	player = get_tree().root.get_node("Level/Player")
+	questHandler = get_node("/root/Level/Player/GUI/Quest")
+	healthPotion = POTION.instance()
+	healthPotion.set_item("Health Potion", 1)
 
 func talk(answer = ""):
 	# Set Fiona's animation to "talk"
@@ -18,7 +23,7 @@ func talk(answer = ""):
 	
 	# Set dialoguePopup npc to Fiona
 	dialoguePopup.npc = self
-	dialoguePopup.npc_name = "Fiona"
+	dialoguePopup.npc_name = "Kate"
 	
 	# Show the current dialogue
 	match quest_status:
@@ -28,7 +33,7 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Hola aventurero! He perdido mi collar, \n puedes encontrarlo por mi?"
+					dialoguePopup.dialogue = "Hola aventurero! Cuando los muertos\n revivieron, sali corriendo y he perdido mi collar, \n puedes encontrarlo por mi?"
 					dialoguePopup.answers = "[A] Si  [B] No"
 					dialoguePopup.open()
 				1:
@@ -41,6 +46,8 @@ func talk(answer = ""):
 							dialoguePopup.answers = "[A] Adios"
 							dialoguePopup.open()
 							$QuestSign.play("subreward")
+							questHandler.new_mission("Tesoro familiar (Mision Secundaria)", "Encuentra el collar perdido\n de Fiona.", 1, "Regresa el collar a Fiona.")
+							check_necklace_found()
 						"B":
 							# Update dialogue tree state
 							dialogue_state = 3
@@ -69,21 +76,22 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Encontraste mi collar?"
+					dialoguePopup.dialogue = "Encontraste mi collar? Está en el\ncementerio, me da miedo volver alli."
 					if necklace_found:
 						dialoguePopup.answers = "[A] Si  [B] No"
 					else:
 						dialoguePopup.answers = "[A] No"
 					dialoguePopup.open()
 				1:
-					if necklace_found and answer == "A":
+					if questHandler.is_returning_mission("Tesoro familiar (Mision Secundaria)") or necklace_found and answer == "A" :
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup
-						dialoguePopup.dialogue = "Eres mi heroe! Por favor, toma esta pocion \n como simbolo de mi gratitud!"
+						dialoguePopup.dialogue = "Muchisimas gracias! Por favor,\ntoma esta pocion como simbolo\nde mi gratitud!"
 						dialoguePopup.answers = "[A] Gracias"
 						dialoguePopup.open()
 						$QuestSign.play("questcomplete")
+						questHandler.finish_mission("Tesoro familiar (Mision Secundaria)")
 					else:
 						# Update dialogue tree state
 						dialogue_state = 3
@@ -101,7 +109,7 @@ func talk(answer = ""):
 					$Body.play("idle")
 					# Add potion and XP to the player. 
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					player.add_potion(Potion.HEALTH)
+					player.adquire_item(healthPotion)
 					player.add_xp(25)
 				3:
 					# Update dialogue tree state
@@ -116,8 +124,8 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Thanks again for your help!"
-					dialoguePopup.answers = "[A] Bye"
+					dialoguePopup.dialogue = "Gracias de nuevo por tu ayuda!"
+					dialoguePopup.answers = "[A] Adios"
 					dialoguePopup.open()
 				1:
 					# Update dialogue tree state
@@ -126,3 +134,7 @@ func talk(answer = ""):
 					dialoguePopup.close()
 					# Set Fiona's animation to "idle"
 					$Body.play("idle")
+
+func check_necklace_found():
+	if necklace_found:
+		questHandler.return_mission("Tesoro familiar (Mision Secundaria)")

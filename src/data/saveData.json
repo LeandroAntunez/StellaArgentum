@@ -5,8 +5,8 @@
 
 	},
 	"stats": {
-		"create_table": "CREATE TABLE IF NOT EXISTS stats ( statsID INTEGER PRIMARY KEY, saveID INTEGER, playerName TEXT, positionX REAL, positionY REAL, level INTEGER, experience INTEGER, experienceNextLevel INTEGER, health INTEGER, healthMax INTEGER, healthRegeneration INTEGER, mana INTEGER, manaMax INTEGER, manaRegeneration INTEGER, FOREIGN KEY(saveID) REFERENCES savegame(idsave));",
-		"insert_table": "INSERT INTO stats (saveID, playerName, positionX, positionY, level, experience, experienceNextLevel, health, healthMax, healthRegeneration, mana, manaMax, manaRegeneration) VALUES ('"	
+		"create_table": "CREATE TABLE IF NOT EXISTS stats ( statsID INTEGER PRIMARY KEY, saveID INTEGER, playerName TEXT, positionX REAL, positionY REAL, level INTEGER, experience INTEGER, experienceNextLevel INTEGER, health INTEGER, healthMax INTEGER, healthRegeneration INTEGER, mana INTEGER, manaMax INTEGER, manaRegeneration INTEGER, attributePoints INTEGER, armor INTEGER, FOREIGN KEY(saveID) REFERENCES savegame(idsave));",
+		"insert_table": "INSERT INTO stats (saveID, playerName, positionX, positionY, level, experience, experienceNextLevel, health, healthMax, healthRegeneration, mana, manaMax, manaRegeneration, attributePoints, armor) VALUES ('"	
 	},
 	"slot": {
 		"create_table": "CREATE TABLE IF NOT EXISTS slot ( slotID INTEGER PRIMARY KEY, saveID INTEGER, slotType TEXT, slotIndex INTEGER, itemName TEXT, itemQuantity INTEGER, itemType TEXT, FOREIGN KEY(saveID) REFERENCES savegame(idsave));"

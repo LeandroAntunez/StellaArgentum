@@ -3,12 +3,14 @@ extends Node
 export (PackedScene) var scn_game
 onready var new_game = load("res://scenes/menu/newPlayer/NewPlayer.tscn")
 onready var load_game = load("res://scenes/menu/loadGame/LoadGame.tscn")
+onready var options = load("res://scenes/menu/options/Options.tscn")
 var dataloaded: Array = []
 onready var continueButton = $CanvasLayer/Continue
 onready var loadButton = $CanvasLayer/LoadGame
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	handle_audio()
 	dataloaded = Gamehandler.load_all_games()
 	disable_load_buttons()
 
@@ -32,3 +34,12 @@ func _on_NewGame_pressed():
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+func _on_Options_pressed():
+	var _scene = get_tree().change_scene_to(options)
+
+func handle_audio():
+	if Gamehandler.playMusic:
+		$BGM.play()
+	else:
+		$BGM.stop()

@@ -1,4 +1,5 @@
 extends "res://scenes/entities/item/Item.gd"
+class_name Potion
 
 enum Potion { HEALTH, MANA }
 export(Potion) var type = Potion.HEALTH
@@ -13,14 +14,18 @@ func _process(_delta):
 func _ready():
 	if type == Potion.MANA:
 		$Sprite.region_rect.position.x = 8
+		item_name = "Mana Potion"
 	else:
 		$Sprite.region_rect.position.x = 0
+		item_name = "Health Potion"
 
 func change_type():
 	if type == Potion.HEALTH:
 		type = Potion.MANA
+		item_name = "Mana Potion"
 	else:
 		type = Potion.HEALTH
+		item_name = "Health Potion"
 
 func add_item_quantity(amount_to_add):
 	item_quantity += amount_to_add

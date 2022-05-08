@@ -1,0 +1,213 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/interface/inventory/default_inventory_background.png" type="Texture" id=2]
+[ext_resource path="res://scenes/gui/inventory/Slot.gd" type="Script" id=3]
+[ext_resource path="res://assets/interface/inventory/WeaponOverlay.png" type="Texture" id=4]
+[ext_resource path="res://assets/interface/inventory/PantsOverlay.png" type="Texture" id=5]
+[ext_resource path="res://assets/interface/inventory/ShirtOverlay.png" type="Texture" id=6]
+[ext_resource path="res://assets/interface/inventory/ShoesOverlay.png" type="Texture" id=7]
+[ext_resource path="res://assets/interface/inventory/item_slot_default_background.png" type="Texture" id=8]
+[ext_resource path="res://scenes/gui/gear/Gear.gd" type="Script" id=9]
+[ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 9
+font_data = ExtResource( 10 )
+
+[node name="Gear" type="Node2D"]
+z_index = 1
+script = ExtResource( 9 )
+
+[node name="Equipment" type="TextureRect" parent="."]
+self_modulate = Color( 0.196078, 0.196078, 0.196078, 0.862745 )
+margin_left = 232.0
+margin_top = 8.0
+margin_right = 480.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 100, 120 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerName" type="Label" parent="Equipment"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -116.0
+margin_right = 117.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 1 )
+text = "Nombre Jugador"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="Equipment"]
+margin_left = 72.0
+margin_top = 16.0
+margin_right = 176.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.701961, 0.701961, 0.701961, 1 )
+text = "Nivel 1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EquipSlot" type="GridContainer" parent="Equipment"]
+margin_left = 24.0
+margin_top = 48.0
+margin_right = 240.0
+margin_bottom = 104.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 134
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShirtSlot" type="Panel" parent="Equipment/EquipSlot"]
+margin_right = 18.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 3 )
+
+[node name="PantsSlot" type="Panel" parent="Equipment/EquipSlot"]
+margin_left = 152.0
+margin_right = 170.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="ShoesSlot" type="Panel" parent="Equipment/EquipSlot"]
+margin_top = 38.0
+margin_right = 18.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 4 )
+script = ExtResource( 3 )
+
+[node name="WeaponSlot" type="Panel" parent="Equipment/EquipSlot"]
+margin_left = 152.0
+margin_top = 38.0
+margin_right = 170.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 5 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemInfo" type="Node2D" parent="."]
+position = Vector2( 40, 0 )
+z_index = 2
+
+[node name="Background" type="ColorRect" parent="ItemInfo"]
+visible = false
+margin_right = 120.0
+margin_bottom = 144.0
+color = Color( 0.603922, 0.603922, 0.603922, 0.913725 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="ItemInfo/Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -68.0
+margin_right = 60.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Espada de hierro
+--------------------
+Calidad:
+Valor: "
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureSlot" type="Node2D" parent="."]
+position = Vector2( 40, 0 )
+
+[node name="WeaponTextureSlot" type="TextureRect" parent="TextureSlot"]
+modulate = Color( 1, 1, 1, 0.588235 )
+margin_left = 368.0
+margin_top = 96.0
+margin_right = 384.0
+margin_bottom = 112.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShirtTextureSlot" type="TextureRect" parent="TextureSlot"]
+margin_left = 216.0
+margin_top = 56.0
+margin_right = 234.0
+margin_bottom = 74.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PantsTextureSlot" type="TextureRect" parent="TextureSlot"]
+margin_left = 368.0
+margin_top = 56.0
+margin_right = 386.0
+margin_bottom = 72.0
+mouse_filter = 2
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoesTextureSlot" type="TextureRect" parent="TextureSlot"]
+margin_left = 216.0
+margin_top = 96.0
+margin_right = 234.0
+margin_bottom = 112.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

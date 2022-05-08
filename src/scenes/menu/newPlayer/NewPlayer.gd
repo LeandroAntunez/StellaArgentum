@@ -7,6 +7,7 @@ var regEx_rule = "^(?=.{2,16}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$"
 signal confirm
 
 func _ready():
+	handle_audio()
 	input.grab_focus()
 
 func _on_EnterName_pressed():
@@ -27,3 +28,8 @@ func _on_ConfirmCharacterButton_pressed():
 func _on_Cancel_pressed():
 	var _scene = get_tree().change_scene_to(main_menu)
 
+func handle_audio():
+	if Gamehandler.playMusic:
+		$BGM.play()
+	else:
+		$BGM.stop()

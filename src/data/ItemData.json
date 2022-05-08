@@ -71,5 +71,29 @@
     "ItemCategory": "Shoes",
     "StackSize": 1,
     "Description": "Some dirty boots!!"
+  },
+  "Health Potion": {
+    "ID": 8,
+    "ItemCategory": "Consumable",
+    "AddHealth": 50,
+    "AddMana": 0,
+    "StackSize": 99,
+    "Description": "Can heal me.",
+    "Rarity": "Poor",
+    "BuyValue": 10,
+    "SellValue": 2,
+    "Type": "Potion"
+  },
+  "Mana Potion": {
+    "ID": 9,
+    "ItemCategory": "Consumable",
+    "AddHealth": 0,
+    "AddMana": 50,
+    "StackSize": 99,
+    "Description": "Can restore my magic.",
+    "Rarity": "Poor",
+    "BuyValue": 10,
+    "SellValue": 2,
+    "Type": "Potion"
   }
 }

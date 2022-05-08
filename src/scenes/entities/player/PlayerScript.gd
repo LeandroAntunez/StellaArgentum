@@ -11,23 +11,23 @@ var attack_playing = false
 # Player initial stats
 var health = 100
 var health_max = 100
-var health_regeneration = 1
+var health_regeneration = 0
 var mana = 100
 var mana_max = 100
-var mana_regeneration = 2
+var mana_regeneration = 0
+var armor = 0
+var attribute_points = 0
 
 # Player inventory
 var actual_weapon = "sword"
 var actual_spell = "fireball"
 export (int) var gold
-enum Potion { HEALTH, MANA }
-var health_potions = 0
-var mana_potions = 0
 
 # Attack variables
 var attack_cooldown_time = 1000
 var next_attack_time = 0
 var attack_damage = 30
+var min_attack = 0
 
 # Fireball variables
 var fireball_damage = 50
@@ -43,7 +43,9 @@ var fireball_scene = preload("res://scenes/entities/fireball/Fireball.tscn")
 
 # Sub-nodes
 onready var animationPlayer = $AnimationPlayer
-onready var equip = $GUI/Inventory/EquipSlots.get_children()
+onready var equip = $GUI/Equips/Equipment/EquipSlot.get_children()
+onready var inventory = $GUI/Inventory/GridContainer.get_children()
+onready var hotbar = $GUI/Hotbar/HotbarSlots.get_children()
 
 # Signals
 signal player_stats_changed
@@ -53,13 +55,16 @@ signal spell
 signal death
 signal pause
 signal inventory_open
+signal quest
 
 func _ready():
-	position.x = -200
-	position.y = -264
 	character_name = GlobalPlayer.character_name
+	
 	if GlobalPlayer.x:
 		GlobalPlayer.load_stats(self)
+	elif GlobalPlayer.exited_cave:
+		position.x = GlobalPlayer.old_position_x
+		position.y = GlobalPlayer.old_position_y
 	else:
 		Gamehandler.set_player(self)
 	emit_signal("player_stats_changed", self)
@@ -120,35 +125,13 @@ func get_animation_direction(direction: Vector2):
 	return "down"
 
 func _input(event):
-	if event.is_action_pressed("inventory"):
-		emit_signal("inventory_open")
 	if event.is_action_pressed("pickup"):
 		if $PickupZone.items_in_range.size() > 0:
 			var pickup_item = $PickupZone.items_in_range.values()[0]
 			pickup_item.pick_up_item(self)
 			$PickupZone.items_in_range.erase(pickup_item)
 	elif event.is_action_pressed("attack"):
-	# Check if player can attack
-		var now = OS.get_ticks_msec()
-		emit_signal("attack", actual_weapon)
-		if now >= next_attack_time:
-			# What's the target?
-			var target = $RayCast2D.get_collider()
-			if target != null:
-				if target.name.find("Skeleton") >= 0:
-					# Skeleton hit!
-					target.hit(attack_damage)
-				# NEW CODE - START
-				if target.is_in_group("NPCs"):
-					# Talk to NPC
-					target.talk()
-					return
-			# Play attack animation
-			attack_playing = true
-			var animation = "attack_" + get_animation_direction(last_direction)
-			$Body.play(animation)
-			# Add cooldown time to current time
-			next_attack_time = now + attack_cooldown_time
+		attack()
 	elif event.is_action_pressed("fireball"):
 		var now = OS.get_ticks_msec()
 		if mana >= 25 and now >= next_fireball_time:
@@ -162,12 +145,10 @@ func _input(event):
 			emit_signal("spell", actual_spell)
 			# Add cooldown time to current time
 			next_fireball_time = now + fireball_cooldown_time
-	elif event.is_action_pressed("drink_health"):
-		drink_health_potion()
-	elif event.is_action_pressed("drink_mana"):
-		drink_mana_potion()
 	elif event.is_action_pressed("pause"):
 		emit_signal("pause", self)
+	elif event.is_action_pressed("quest"):
+		emit_signal("quest")
 
 func _on_AnimatedSprite_animation_finished():
 	attack_playing = false
@@ -205,35 +186,27 @@ func hit(damage):
 func play_animation(animationName):
 	animationPlayer.play(animationName)
 
-func add_potion(type):
-	if type == Potion.HEALTH:
-		health_potions = health_potions + 1
-	else:
-		mana_potions = mana_potions + 1
-	emit_signal("player_stats_changed", self)
-
 func add_xp(value):
 	xp += value
 	# Has the player reached the next level?
+	check_level_up()
+	emit_signal("player_stats_changed", self)
+
+func check_level_up():
 	if xp >= xp_next_level:
 		level += 1
 		xp = xp - xp_next_level
 		xp_next_level *= 2
-		print("1")
+		attribute_points += 1
 		emit_signal("player_level_up")
+
+func drink_health_potion(amount):
+	health += amount
 	emit_signal("player_stats_changed", self)
 
-func drink_health_potion():
-		if health_potions > 0:
-			health_potions = health_potions - 1
-			health = min(health + 50, health_max)
-			emit_signal("player_stats_changed", self)
-
-func drink_mana_potion():
-		if mana_potions > 0:
-			mana_potions = mana_potions - 1
-			mana = min(mana + 50, mana_max)
-			emit_signal("player_stats_changed", self)
+func drink_mana_potion(amount):
+	mana += amount
+	emit_signal("player_stats_changed", self)
 
 func generate_id():
 	pass
@@ -243,3 +216,47 @@ func _on_item_entered(item):
 
 func _on_item_exited(item):
 	$PickupZone._on_PickupZone_body_exited(item)
+
+func upgrade_attribute(attributeName: String, amount: int):
+	attribute_points -= 1
+	var newValue: int = get(attributeName) + amount
+	set(attributeName, newValue)
+
+func obtain_gold(amount: int):
+	gold += amount
+	emit_signal("player_stats_changed", self)
+
+func discount_gold(amount: int):
+	gold -= amount
+	emit_signal("player_stats_changed", self)
+
+func can_buy(item):
+	return gold >= item.buy_value
+
+func adquire_item(item):
+	var itemDrop: ItemDrop = ParseItem.item_to_itemDrop(item)
+	itemDrop.pick_up_item(self)
+
+func attack():
+# Check if player can attack
+	var now = OS.get_ticks_msec()
+	emit_signal("attack", actual_weapon)
+	if now >= next_attack_time:
+		# What's the target?
+		var target = $RayCast2D.get_collider()
+		if target != null:
+			if target.is_in_group("Enemy"):
+			#if target.name.find("Skeleton") >= 0:
+				# Skeleton hit!
+				target.hit(attack_damage)
+			# NEW CODE - START
+			if target.is_in_group("NPCs"):
+				# Talk to NPC
+				target.talk()
+				return
+		# Play attack animation
+		attack_playing = true
+		var animation = "attack_" + get_animation_direction(last_direction)
+		$Body.play(animation)
+		# Add cooldown time to current time
+		next_attack_time = now + attack_cooldown_time

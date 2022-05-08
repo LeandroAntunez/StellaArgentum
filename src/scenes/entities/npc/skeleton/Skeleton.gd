@@ -1,20 +1,21 @@
 extends KinematicBody2D
 
 # Reference to potion scene
-var potion_scene = preload("res://scenes/entities/item/potion/Potion.tscn")
+var potion_scene = preload("res://scenes/entities/item/consumable/ConsumableDrop.tscn")
 
 # Skeleton stats
-var health = 100
-var health_max = 100
-var health_regeneration = 1
+export (int) var health = 100
+export (int) var health_max = 100
+export (int) var health_regeneration = 1
 
 # Attack variables
-var attack_damage = 10
+export (int) var attack_damage = 10
 var attack_cooldown_time = 1500
 var next_attack_time = 0
 
 # Node references
 var player
+var questHandler
 
 # Random number generator
 var rng = RandomNumberGenerator.new()
@@ -34,6 +35,7 @@ signal death
 
 func _ready():
 	player = get_tree().root.get_node("Level/Player")
+	questHandler = get_node("/root/Level/Player/GUI/Quest")
 	rng.randomize()
 
 func _process(delta):
@@ -140,21 +142,31 @@ func hit(damage):
 		emit_signal("hurt")
 		$AnimationPlayer.play("hit")
 	else:
-		$Timer.stop()
-		direction = Vector2.ZERO
-		set_process(false)
-		other_animation_playing = true
-		$AnimatedSprite.play("death")
-		emit_signal("death")
-		# 80% probability to drop a potion on death
-		if rng.randf() <= 0.8:
-			var potion = potion_scene.instance()
-			potion.type = rng.randi() % 2
-			get_tree().root.get_node("Level").call_deferred("add_child", potion)
-			potion.position = position
-		# Add XP to player
-		player.add_xp(25)
+		die()
 
+func die():
+	$Timer.stop()
+	direction = Vector2.ZERO
+	set_process(false)
+	other_animation_playing = true
+	$AnimatedSprite.play("death")
+	GlobalPlayer.skeleton_killed += 1
+	emit_signal("death")
+	# 80% probability to drop a potion on death
+	if rng.randf() <= 0.4:
+		drop_item("Health Potion")
+	if rng.randf() <= 0.4:
+		drop_item("Mana Potion")
+	# Add XP to player
+	player.add_xp(25)
+	# Quest "Amenaza en el cementerio"
+	questHandler.update_mission("Amenaza en el cementerio", 1)
+
+func drop_item(itemDropName):
+	var potion = potion_scene.instance()
+	potion.item_name = itemDropName
+	get_tree().root.get_node("Level").call_deferred("add_child", potion)
+	potion.position = position
 
 func _on_AnimatedSprite_frame_changed():
 	if $AnimatedSprite.animation.ends_with("_attack") and $AnimatedSprite.frame == 1:

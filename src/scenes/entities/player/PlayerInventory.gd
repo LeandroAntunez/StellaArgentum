@@ -2,12 +2,12 @@ extends Node
 
 signal active_item_updated
 
-const SlotClass = preload("res://scenes/menu/inventory/Slot.gd")
 const ItemClass = preload("res://scenes/entities/item/Item.gd")
 const NUM_INVENTORY_SLOTS = 20
 const NUM_HOTBAR_SLOTS = 8
-
+const NUM_EQUIPS_SLOTS = 4
 var active_item_slot = 0
+signal update_changes
 
 var inventory = {
 	#0: ["Iron Sword", 1, "Weapon"],  #--> slot_index: [item_name, item_quantity, item_type]
@@ -31,8 +31,16 @@ func load_equips(loaded_equip):
 	for slot in loaded_equip:
 		equips[slot.slotIndex] = [slot.itemName, slot.itemQuantity, slot.itemType]
 
+func load_inventory(loaded_inventory):
+	for slot in loaded_inventory:
+		inventory[slot.slotIndex] = [slot.itemName, slot.itemQuantity, slot.itemType]
+
+func load_hotbar(loaded_hotbar):
+	for slot in loaded_hotbar:
+		hotbar[slot.slotIndex] = [slot.itemName, slot.itemQuantity, slot.itemType]
+
 # TODO: First try to add to hotbar
-func add_item(itemDrop):#item_name, item_quantity):
+func add_item(itemDrop):
 	var item_name = itemDrop.item_name
 	var item_quantity = 1
 	var slot_indices: Array = inventory.keys()
@@ -59,40 +67,43 @@ func add_item(itemDrop):#item_name, item_quantity):
 
 # TODO: Make compatible with hotbar as well
 func update_slot_visual(slot_index, item_name, new_quantity, itemDrop):
-	var slot: Slot = get_tree().root.get_node("/root/Level/Player/GUI/Inventory/GridContainer/Slot" + str(slot_index + 1))
+	var slot = get_tree().root.get_node("/root/Level/Player/GUI/Inventory/GridContainer/Slot" + str(slot_index + 1))
 	if slot.item != null:
 		slot.item.set_item(item_name, new_quantity)
 	else:
 		slot.initialize_item(item_name, new_quantity, itemDrop)
+	emit_signal("update_changes")
 
-func remove_item(slot: SlotClass):
+func remove_item(slot):
 	match slot.slotType:
-		SlotClass.SlotType.HOTBAR:
+		SlotType.Type.HOTBAR:
 			hotbar.erase(slot.slot_index)
-		SlotClass.SlotType.INVENTORY:
+		SlotType.Type.INVENTORY:
 			inventory.erase(slot.slot_index)
 		_:
 			equips.erase(slot.slot_index)
+	emit_signal("update_changes")
 
-func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
+func add_item_to_empty_slot(item: ItemClass, slot):
 	match slot.slotType:
-		SlotClass.SlotType.HOTBAR:
+		SlotType.Type.HOTBAR:
 			hotbar[slot.slot_index] = [item.item_name, item.item_quantity, item.toString()]
-		SlotClass.SlotType.INVENTORY:
+		SlotType.Type.INVENTORY:
 			inventory[slot.slot_index] = [item.item_name, item.item_quantity, item.toString()]
 		_:
 			equips[slot.slot_index] = [item.item_name, item.item_quantity, item.toString()]
+	emit_signal("update_changes")
 
-func add_item_quantity(slot: SlotClass, quantity_to_add: int):
+func add_item_quantity(slot, quantity_to_add: int):
 	match slot.slotType:
-		SlotClass.slotType.HOTBAR:
+		SlotType.Type.HOTBAR:
 			hotbar[slot.slot_index][1] += quantity_to_add
-		SlotClass.slotType.INVENTORY:
+		SlotType.Type.INVENTORY:
 			inventory[slot.slot_index][1] += quantity_to_add
 		_:
 			equips[slot.slot_index][1] += quantity_to_add
+	emit_signal("update_changes")
 
-###
 ### Hotbar Related Functions
 func active_item_scroll_up() -> void:
 	active_item_slot = (active_item_slot + 1) % NUM_HOTBAR_SLOTS
@@ -121,9 +132,11 @@ func itemQuantityOnEquip(slot) -> int:
 	return equips[slot][1]
 
 func itemTypeOnEquip(slot) -> String:
-	#if !equips.empty():
-	#	if !equips[slot].empty():
-	#		return equips[slot][2]
 	if equips.has(slot):
 		return equips[slot][2]
 	return "Null"
+
+# Location: "inventory" / "equips" / "hotbar"
+func delete_item(location: String, slotNumber):
+	get(location).erase(slotNumber)
+	emit_signal("update_changes")

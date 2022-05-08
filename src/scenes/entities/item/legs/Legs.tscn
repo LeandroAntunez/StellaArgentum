@@ -8,4 +8,9 @@
 script = ExtResource( 2 )
 
 [node name="TextureRect" parent="." index="0"]
+margin_right = 16.0
+margin_bottom = 16.0
 texture = ExtResource( 3 )
+
+[node name="Label" parent="." index="1"]
+visible = false

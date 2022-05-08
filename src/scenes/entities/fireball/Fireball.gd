@@ -25,7 +25,8 @@ func _on_Fireball_body_entered(body):
 			return
 	
 	# If the fireball hit a Skeleton, call the hit() function
-	if body.name.find("Skeleton") >= 0:
+	if body.is_in_group("Enemy"):
+	#if body.name.find("Skeleton") >= 0:
 		body.hit(attack_damage)
 		explode()
 		# Stop the movement and explode

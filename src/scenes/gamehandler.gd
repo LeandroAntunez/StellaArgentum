@@ -5,6 +5,7 @@ const SQLite = preload("res://lib/gdsqlite.gdns");
 
 # Variables
 onready var db = SQLite.new()
+var playMusic = true
 var player
 var loadedGames = []
 
@@ -39,8 +40,12 @@ func load_last_game():
 		var loadedStats: Dictionary = StatsController.load_stats_table(loadedGame.idsave)
 		GlobalPlayer.load_player(loadedStats)
 		var loadedEquip: Array = SlotController.load_equip_table(loadedGame.idsave)
+		var loadedInventory: Array = SlotController.load_inventory_table(loadedGame.idsave)
+		var loadedHotbar: Array = SlotController.load_hotbar_table(loadedGame.idsave)
 		# Aplicar el equipamento guardado al jugador
 		PlayerInventory.load_equips(loadedEquip)
+		PlayerInventory.load_inventory(loadedInventory)
+		PlayerInventory.load_hotbar(loadedHotbar)
 	return loadedGame
 
 func load_game_with_saveid(idsave):
@@ -54,3 +59,6 @@ func load_stats_table(saveID):
 
 func set_player(aPlayer):
 	player = aPlayer
+
+func change_music_state():
+	playMusic = !playMusic

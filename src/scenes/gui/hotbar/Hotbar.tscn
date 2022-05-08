@@ -1,0 +1,285 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://assets/interface/GUI/GearIcon.png" type="Texture" id=1]
+[ext_resource path="res://assets/interface/GUI/BagIcon.png" type="Texture" id=2]
+[ext_resource path="res://assets/interface/GUI/ConfigIcon.png" type="Texture" id=3]
+[ext_resource path="res://images/hotbar_background.png" type="Texture" id=4]
+[ext_resource path="res://scenes/gui/hotbar/Hotbar.gd" type="Script" id=5]
+[ext_resource path="res://scenes/gui/hotbar/HotbarSlots.gd" type="Script" id=6]
+[ext_resource path="res://scenes/gui/inventory/Slot.gd" type="Script" id=7]
+[ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/interface/GUI/QuestIcon.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
+[sub_resource type="InputEventAction" id=2]
+action = "inventory"
+pressed = true
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[node name="Hotbar" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_top = 320.0
+margin_right = 640.0
+margin_bottom = 360.0
+color = Color( 0, 0, 0, 0.627451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+margin_left = 136.0
+margin_top = 320.0
+margin_right = 336.0
+margin_bottom = 336.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HotbarSlots" type="GridContainer" parent="."]
+margin_left = 146.0
+margin_top = 320.0
+margin_right = 330.0
+margin_bottom = 338.0
+custom_constants/hseparation = 8
+columns = 8
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HotbarSlot1" type="Panel" parent="HotbarSlots" groups=[
+"1",
+]]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+script = ExtResource( 7 )
+
+[node name="HotbarSlot2" type="Panel" parent="HotbarSlots" groups=[
+"2",
+]]
+margin_left = 24.0
+margin_right = 40.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+script = ExtResource( 7 )
+
+[node name="HotbarSlot3" type="Panel" parent="HotbarSlots" groups=[
+"3",
+]]
+margin_left = 48.0
+margin_right = 64.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+script = ExtResource( 7 )
+
+[node name="HotbarSlot4" type="Panel" parent="HotbarSlots" groups=[
+"4",
+]]
+margin_left = 72.0
+margin_right = 88.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+script = ExtResource( 7 )
+
+[node name="HotbarSlot5" type="Panel" parent="HotbarSlots" groups=[
+"5",
+]]
+margin_left = 96.0
+margin_right = 112.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+script = ExtResource( 7 )
+
+[node name="HotbarSlot6" type="Panel" parent="HotbarSlots" groups=[
+"6",
+]]
+margin_left = 120.0
+margin_right = 136.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+script = ExtResource( 7 )
+
+[node name="HotbarSlot7" type="Panel" parent="HotbarSlots" groups=[
+"7",
+]]
+margin_left = 144.0
+margin_right = 160.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+script = ExtResource( 7 )
+
+[node name="HotbarSlot8" type="Panel" parent="HotbarSlots" groups=[
+"8",
+]]
+margin_left = 168.0
+margin_right = 184.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+script = ExtResource( 7 )
+
+[node name="ActiveItemLabel" type="Label" parent="."]
+margin_left = 178.0
+margin_top = 296.0
+margin_right = 284.0
+margin_bottom = 313.0
+custom_fonts/font = SubResource( 1 )
+text = "Sample Text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Inventory" type="Button" parent="."]
+margin_left = 392.0
+margin_top = 312.0
+margin_right = 433.0
+margin_bottom = 347.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 3 )
+icon = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quest" type="Button" parent="."]
+margin_left = 344.0
+margin_top = 312.0
+margin_right = 385.0
+margin_bottom = 347.0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 3 )
+icon = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gear" type="Button" parent="."]
+margin_left = 440.0
+margin_top = 312.0
+margin_right = 480.0
+margin_bottom = 347.0
+toggle_mode = true
+action_mode = 0
+icon = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Config" type="Button" parent="."]
+margin_left = 488.0
+margin_top = 312.0
+margin_right = 530.0
+margin_bottom = 347.0
+toggle_mode = true
+action_mode = 0
+icon = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IconTween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[node name="hotkeys" type="Node2D" parent="."]
+
+[node name="1" type="Label" parent="hotkeys"]
+margin_left = 144.0
+margin_top = 312.0
+margin_right = 152.0
+margin_bottom = 328.0
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2" type="Label" parent="hotkeys"]
+margin_left = 172.0
+margin_top = 311.523
+margin_right = 180.0
+margin_bottom = 325.523
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="Label" parent="hotkeys"]
+margin_left = 192.0
+margin_top = 312.0
+margin_right = 202.0
+margin_bottom = 326.0
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="4" type="Label" parent="hotkeys"]
+margin_left = 218.0
+margin_top = 312.0
+margin_right = 226.0
+margin_bottom = 326.0
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="5" type="Label" parent="hotkeys"]
+margin_left = 242.0
+margin_top = 312.0
+margin_right = 250.0
+margin_bottom = 326.0
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="6" type="Label" parent="hotkeys"]
+margin_left = 266.0
+margin_top = 312.0
+margin_right = 274.0
+margin_bottom = 326.0
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="7" type="Label" parent="hotkeys"]
+margin_left = 290.0
+margin_top = 312.0
+margin_right = 298.0
+margin_bottom = 326.0
+text = "7"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="8" type="Label" parent="hotkeys"]
+margin_left = 314.0
+margin_top = 312.0
+margin_right = 322.0
+margin_bottom = 326.0
+text = "8"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Inventory" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="Quest" to="." method="_on_Quest_pressed"]
+[connection signal="pressed" from="Gear" to="." method="_on_Gear_pressed"]
+[connection signal="pressed" from="Config" to="." method="_on_Config_pressed"]

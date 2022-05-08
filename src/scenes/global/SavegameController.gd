@@ -14,6 +14,8 @@ func save(aPlayer: Player):
 	var idsave = select_last().idsave
 	StatsController.insert_stats_table(idsave)
 	SlotController.insert_equip_table(idsave, aPlayer)
+	SlotController.insert_inventory_table(idsave, aPlayer)
+	SlotController.insert_hotbar_table(idsave, aPlayer)
 
 func insert_table(savetime, name, level, place):
 	open_db()

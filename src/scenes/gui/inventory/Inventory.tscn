@@ -1,0 +1,297 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://assets/interface/inventory/default_inventory_background.png" type="Texture" id=1]
+[ext_resource path="res://item_slot_default_background.png" type="Texture" id=2]
+[ext_resource path="res://scenes/gui/inventory/Slot.gd" type="Script" id=3]
+[ext_resource path="res://scenes/gui/inventory/Inventory.gd" type="Script" id=4]
+[ext_resource path="res://assets/interface/GUI/coin/coin_2.png" type="Texture" id=5]
+[ext_resource path="res://assets/interface/GUI/coin/coin_3.png" type="Texture" id=6]
+[ext_resource path="res://assets/interface/GUI/coin/coin_4.png" type="Texture" id=7]
+[ext_resource path="res://assets/interface/GUI/coin/coin_1.png" type="Texture" id=8]
+[ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 9 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 9
+font_data = ExtResource( 10 )
+
+[node name="Inventory" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 0.196078, 0.196078, 0.196078, 0.862745 )
+margin_left = 488.0
+margin_top = 128.0
+margin_right = 632.0
+margin_bottom = 264.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TextureRect"]
+position = Vector2( 40, 32 )
+scale = Vector2( 0.375, 0.3125 )
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="Gold" type="Label" parent="TextureRect"]
+margin_left = 56.0
+margin_top = 24.0
+margin_right = 136.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.784314, 0.784314, 0, 1 )
+text = "Oro:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 518.0
+margin_top = 173.0
+margin_right = 624.0
+margin_bottom = 261.0
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Panel" parent="GridContainer"]
+margin_right = 18.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot2" type="Panel" parent="GridContainer"]
+margin_left = 22.0
+margin_right = 40.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot3" type="Panel" parent="GridContainer"]
+margin_left = 44.0
+margin_right = 62.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot4" type="Panel" parent="GridContainer"]
+margin_left = 66.0
+margin_right = 84.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot5" type="Panel" parent="GridContainer"]
+margin_left = 88.0
+margin_right = 106.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot6" type="Panel" parent="GridContainer"]
+margin_top = 22.0
+margin_right = 18.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot7" type="Panel" parent="GridContainer"]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot8" type="Panel" parent="GridContainer"]
+margin_left = 44.0
+margin_top = 22.0
+margin_right = 62.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot9" type="Panel" parent="GridContainer"]
+margin_left = 66.0
+margin_top = 22.0
+margin_right = 84.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot10" type="Panel" parent="GridContainer"]
+margin_left = 88.0
+margin_top = 22.0
+margin_right = 106.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot11" type="Panel" parent="GridContainer"]
+margin_top = 44.0
+margin_right = 18.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot12" type="Panel" parent="GridContainer"]
+margin_left = 22.0
+margin_top = 44.0
+margin_right = 40.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot13" type="Panel" parent="GridContainer"]
+margin_left = 44.0
+margin_top = 44.0
+margin_right = 62.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot14" type="Panel" parent="GridContainer"]
+margin_left = 66.0
+margin_top = 44.0
+margin_right = 84.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot15" type="Panel" parent="GridContainer"]
+margin_left = 88.0
+margin_top = 44.0
+margin_right = 106.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot16" type="Panel" parent="GridContainer"]
+margin_top = 66.0
+margin_right = 18.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot17" type="Panel" parent="GridContainer"]
+margin_left = 22.0
+margin_top = 66.0
+margin_right = 40.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot18" type="Panel" parent="GridContainer"]
+margin_left = 44.0
+margin_top = 66.0
+margin_right = 62.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot19" type="Panel" parent="GridContainer"]
+margin_left = 66.0
+margin_top = 66.0
+margin_right = 84.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Slot20" type="Panel" parent="GridContainer"]
+margin_left = 88.0
+margin_top = 66.0
+margin_right = 106.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 18, 18 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Title" type="Label" parent="."]
+margin_left = 528.0
+margin_top = 128.0
+margin_right = 614.0
+margin_bottom = 145.0
+custom_fonts/font = SubResource( 4 )
+text = "Inventario"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemInfo" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Background" type="ColorRect" parent="ItemInfo"]
+visible = false
+margin_right = 120.0
+margin_bottom = 144.0
+color = Color( 0.603922, 0.603922, 0.603922, 0.913725 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="ItemInfo/Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -68.0
+margin_right = 60.0
+margin_bottom = 68.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Espada de hierro
+--------------------
+Calidad:
+Valor: "
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

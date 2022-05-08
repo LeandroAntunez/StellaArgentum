@@ -9,10 +9,6 @@ func _ready():
 	goldenXPBar.max_value = player.xp_next_level
 	$Label.text = str("EXPERIENCIA: ", player.xp, "/", player.xp_next_level)
 
-func _on_Player_player_level_up():
-	goldenXPBar.value = player.xp
-	goldenXPBar.max_value = player.xp_next_level
-
 func _process(delta):
 	var new_xp = player.xp
 	tween.interpolate_property(goldenXPBar, 'value', goldenXPBar.value, new_xp, 0.1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -24,3 +20,7 @@ func _on_XPBar_mouse_entered():
 
 func _on_XPBar_mouse_exited():
 	$Label.visible = false
+
+func _on_GUI_level_up():
+	goldenXPBar.value = player.xp
+	goldenXPBar.max_value = player.xp_next_level

@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/interface/GUI/coin/coin_1.png" type="Texture" id=1]
+[ext_resource path="res://scenes/gui/merchant/MerchantSlot.gd" type="Script" id=2]
+[ext_resource path="res://assets/interface/inventory/item_slot_default_background.png" type="Texture" id=3]
+[ext_resource path="res://scenes/gui/merchant/sellContainer/SellContainer.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[node name="SellContainer" type="VBoxContainer"]
+margin_right = 150.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+location = "Inventory"
+
+[node name="ItemContainer" type="HBoxContainer" parent="."]
+margin_right = 150.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MerchantSlot" type="Panel" parent="ItemContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="ItemName" type="Label" parent="ItemContainer"]
+margin_left = 20.0
+margin_top = 1.0
+margin_right = 127.0
+margin_bottom = 15.0
+text = "Nombre de Item"
+
+[node name="LocationContainer" type="HBoxContainer" parent="."]
+margin_top = 20.0
+margin_right = 150.0
+margin_bottom = 34.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Location" type="Label" parent="LocationContainer"]
+margin_left = 73.0
+margin_right = 138.0
+margin_bottom = 14.0
+text = "Inventario"
+align = 2
+
+[node name="SlotNumber" type="Label" parent="LocationContainer"]
+margin_left = 142.0
+margin_right = 150.0
+margin_bottom = 14.0
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ValueContainer" type="HBoxContainer" parent="."]
+margin_top = 38.0
+margin_right = 150.0
+margin_bottom = 54.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Price" type="Label" parent="ValueContainer"]
+margin_left = 82.0
+margin_top = 1.0
+margin_right = 130.0
+margin_bottom = 15.0
+text = "Valor: 0"
+
+[node name="Coin" type="TextureRect" parent="ValueContainer"]
+margin_left = 134.0
+margin_right = 150.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 1 )
+expand = true

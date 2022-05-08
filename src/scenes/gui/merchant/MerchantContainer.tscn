@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/interface/GUI/coin/coin_1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/gui/merchant/MerchantContainer.gd" type="Script" id=3]
+[ext_resource path="res://assets/interface/inventory/item_slot_default_background.png" type="Texture" id=4]
+[ext_resource path="res://scenes/gui/merchant/MerchantSlot.gd" type="Script" id=5]
+[ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 18, 18 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 6 )
+
+[node name="MerchantContainer" type="VBoxContainer"]
+margin_right = 145.0
+margin_bottom = 38.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+itemName = "Iron Sword"
+itemQuantity = 1
+
+[node name="ItemContainer" type="HBoxContainer" parent="."]
+margin_right = 145.0
+margin_bottom = 16.0
+mouse_default_cursor_shape = 2
+custom_constants/separation = 4
+
+[node name="Slot" type="Panel" parent="ItemContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 5 )
+
+[node name="ItemName" type="Label" parent="ItemContainer"]
+margin_left = 20.0
+margin_right = 131.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 2 )
+text = "Nombre de Item"
+
+[node name="ValueContainer" type="HBoxContainer" parent="."]
+margin_top = 20.0
+margin_right = 145.0
+margin_bottom = 36.0
+alignment = 2
+
+[node name="Coin" type="TextureRect" parent="ValueContainer"]
+margin_left = 77.0
+margin_right = 93.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="Price" type="Label" parent="ValueContainer"]
+margin_left = 97.0
+margin_top = 1.0
+margin_right = 145.0
+margin_bottom = 15.0
+text = "Valor: 0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

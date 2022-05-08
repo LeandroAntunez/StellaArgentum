@@ -1,25 +1,92 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/entities/item/torso/TorsoDrop.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/entities/item/weapon/WeaponDrop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/entities/item/consumable/ConsumableDrop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/entities/npc/merchant/Merchant.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/level/test/TestLevel.gd" type="Script" id=6]
+[ext_resource path="res://scenes/entities/npc/oldman/Oldman.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/entities/npc/skeleton/Skeleton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/entities/item/quest/necklace/Necklace.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/entities/npc/fiona/Fiona.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/entities/npc/spider/Spider.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/entities/npc/boss/Alexandros.tscn" type="PackedScene" id=12]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 400, 300 )
-scale = Vector2( 3, 3 )
+position = Vector2( 320, 176 )
 collision_mask = 2
+gold = 1500
 
 [node name="WeaponDrop" parent="." instance=ExtResource( 3 )]
-position = Vector2( 256, 296 )
+position = Vector2( 168, 208 )
 item_name = "Iron Sword"
 
 [node name="WeaponDrop2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 256, 320 )
+position = Vector2( 336, 208 )
 item_name = "Profecy Sword"
 
 [node name="ShirtDrop" parent="." instance=ExtResource( 2 )]
-position = Vector2( 500, 380 )
+position = Vector2( 368, 184 )
+
+[node name="ConsumableDrop" parent="." instance=ExtResource( 4 )]
+position = Vector2( 232, 144 )
+item_name = "Health Potion"
+
+[node name="ConsumableDrop2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 200, 152 )
+item_name = "Health Potion"
+
+[node name="ConsumableDrop3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 224, 168 )
+item_name = "Health Potion"
+
+[node name="ConsumableDrop4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 264, 112 )
+item_name = "Mana Potion"
+
+[node name="Merchant" parent="." instance=ExtResource( 5 )]
+position = Vector2( 408, 104 )
+
+[node name="OldMan" parent="." instance=ExtResource( 7 )]
+position = Vector2( 296, 176 )
+
+[node name="Skeleton" parent="." instance=ExtResource( 8 )]
+position = Vector2( 64, 144 )
+scale = Vector2( 1, 1 )
+
+[node name="Skeleton2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 112, 88 )
+
+[node name="Skeleton3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 72, 64 )
+
+[node name="Skeleton4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 88, 24 )
+
+[node name="Skeleton5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 248, 48 )
+
+[node name="Skeleton6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 200, 40 )
+
+[node name="Necklace" parent="." instance=ExtResource( 9 )]
+position = Vector2( 128, 248 )
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="Friend" type="Node2D" parent="NPCs"]
+
+[node name="Fiona" parent="NPCs/Friend" instance=ExtResource( 10 )]
+position = Vector2( 288, 248 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider" parent="." instance=ExtResource( 11 )]
+position = Vector2( 592, 176 )
+
+[node name="Alexandros" parent="." instance=ExtResource( 12 )]
+position = Vector2( 760, 208 )
+scale = Vector2( 1.2, 1.5 )

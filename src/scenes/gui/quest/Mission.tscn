@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/gui/quest/Mission.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 1 )
+
+[node name="Mission" type="VBoxContainer"]
+margin_right = 216.0
+margin_bottom = 95.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Separator" type="Label" parent="."]
+margin_right = 216.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "-------------------------------------------"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_top = 18.0
+margin_right = 216.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Caída del meteorito"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Details" type="HSplitContainer" parent="."]
+margin_top = 39.0
+margin_right = 216.0
+margin_bottom = 68.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Objective" type="Label" parent="Details"]
+margin_right = 167.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Busca alguna manera de
+llegar a la Zona de Impacto"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Count" type="Label" parent="Details"]
+margin_left = 179.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

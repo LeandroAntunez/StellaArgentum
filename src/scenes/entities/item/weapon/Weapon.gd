@@ -4,6 +4,9 @@ class_name Weapon
 export (int) var damage_min
 export (int) var damage_max
 
+func _ready():
+	._ready()
+
 func set_item(nm, qt):
 	var weapon_from_data = JsonData.item_data[nm]
 	id = weapon_from_data["ID"]
@@ -17,3 +20,9 @@ func set_item(nm, qt):
 
 func toString() -> String:
 	return "Weapon"
+
+func extra_description():
+	var description_text = "Daño: " + str(damage_min) + "-" + str(damage_max)
+	description_text += "\n-------------------\n"
+	description_text += description
+	return description_text

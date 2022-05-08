@@ -4,7 +4,7 @@ onready var forest = load("res://assets/audio/music/level/forest/RPG - The Secre
 onready var game_over = load("res://assets/audio/music/gameover/Death Is Just Another Path.ogg")
 
 func _ready():
-	set_audio(forest)
+	handle_audio()
 
 func set_audio(music):
 	set_stream(music)
@@ -12,3 +12,9 @@ func set_audio(music):
 
 func _on_Player_death():
 	set_audio(game_over)
+
+func handle_audio():
+	if Gamehandler.playMusic:
+		set_audio(forest)
+	else:
+		stop()

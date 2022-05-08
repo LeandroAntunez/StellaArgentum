@@ -2,10 +2,15 @@ extends Node
 
 var character_name
 
+var skeleton_killed = 0
+
 # Player location
 var last_direction
 var x
 var y
+var old_position_x
+var old_position_y
+var exited_cave = false
 
 # Player initial stats
 var health
@@ -14,6 +19,8 @@ var health_regeneration
 var mana
 var mana_max
 var mana_regeneration
+var armor
+var attributte_points
 
 # Player inventory
 var actual_weapon
@@ -36,6 +43,7 @@ var next_fireball_time
 var xp
 var xp_next_level
 var level
+var tutorial_showed = false
 
 func load_player(loaded_game):
 	character_name = loaded_game.playerName
@@ -50,6 +58,9 @@ func load_player(loaded_game):
 	mana = loaded_game.mana
 	mana_max = loaded_game.manaMax
 	mana_regeneration = loaded_game.manaRegeneration
+	armor = loaded_game.armor
+	attributte_points = loaded_game.attributePoints
+	tutorial_ended()
 
 func save_stats(player):
 	character_name = player.character_name
@@ -64,6 +75,8 @@ func save_stats(player):
 	mana = player.mana
 	mana_max = player.mana_max
 	mana_regeneration = player.mana_regeneration
+	armor = player.armor
+	attributte_points = player.attribute_points
 
 func load_stats(player):
 	player.character_name = character_name
@@ -78,3 +91,21 @@ func load_stats(player):
 	player.mana = mana
 	player.mana_max = mana_max
 	player.mana_regeneration = mana_regeneration
+	player.attribute_points = attributte_points
+	player.armor = armor
+
+func save_position(player):
+	old_position_x = player.position.x
+	old_position_y = player.position.y + 20
+
+func enter_cave():
+	exited_cave = false
+
+func exit_cave():
+	exited_cave = true
+
+func exit_level():
+	exited_cave = false
+
+func tutorial_ended():
+	tutorial_showed = true

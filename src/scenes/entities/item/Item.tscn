@@ -1,19 +1,18 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/entities/item/Item.gd" type="Script" id=1]
-[ext_resource path="res://item_icons/Iron Sword.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/item/Iron Sword.png" type="Texture" id=2]
 [ext_resource path="res://assets/font/m5x7.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 3 )
 
 [node name="Item" type="Node2D"]
-z_index = 1
 script = ExtResource( 1 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 24.0
+margin_bottom = 24.0
 mouse_filter = 2
 texture = ExtResource( 2 )
 __meta__ = {
@@ -30,3 +29,13 @@ text = "99"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="TextureRect" to="." method="_on_TextureRect_mouse_entered"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/menu/newPlayer/NewPlayer.gd" type="Script" id=2]
-[ext_resource path="res://assets/textures/character/player_frames/player_down_idle_1.png" type="Texture" id=3]
-[ext_resource path="res://assets/textures/character/player_frames/player_down_idle_2.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/character/player_frames/main-character-sheet.png" type="Texture" id=3]
 [ext_resource path="res://scenes/menu/newPlayer/Confirm.gd" type="Script" id=5]
 [ext_resource path="res://assets/audio/music/menu/new/Loop_Kings_Feast.wav" type="AudioStream" id=6]
 
@@ -12,29 +11,33 @@ size = 32
 font_data = ExtResource( 1 )
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 22, 22 )
+region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 2 ), ExtResource( 4 ) ],
+"frames": [ SubResource( 2 ), SubResource( 2 ), SubResource( 2 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ), SubResource( 4 ) ],
 "loop": true,
 "name": "idle",
-"speed": 2.0
+"speed": 1.0
 } ]
-
-[sub_resource type="DynamicFontData" id=4]
-font_path = "res://assets/font/Schrödinger.ttf"
-
-[sub_resource type="DynamicFont" id=5]
-size = 28
-font_data = SubResource( 4 )
 
 [sub_resource type="DynamicFontData" id=6]
 font_path = "res://assets/font/Schrödinger.ttf"
 
 [sub_resource type="DynamicFont" id=7]
-size = 32
+size = 28
 font_data = SubResource( 6 )
 
 [sub_resource type="DynamicFontData" id=8]
@@ -44,27 +47,27 @@ font_path = "res://assets/font/Schrödinger.ttf"
 size = 32
 font_data = SubResource( 8 )
 
-[sub_resource type="StyleBoxEmpty" id=10]
-
-[sub_resource type="DynamicFontData" id=11]
+[sub_resource type="DynamicFontData" id=10]
 font_path = "res://assets/font/Schrödinger.ttf"
 
-[sub_resource type="DynamicFont" id=12]
-size = 50
-font_data = SubResource( 11 )
+[sub_resource type="DynamicFont" id=11]
+size = 32
+font_data = SubResource( 10 )
+
+[sub_resource type="StyleBoxEmpty" id=12]
 
 [sub_resource type="DynamicFontData" id=13]
 font_path = "res://assets/font/Schrödinger.ttf"
 
 [sub_resource type="DynamicFont" id=14]
-size = 32
+size = 50
 font_data = SubResource( 13 )
 
 [sub_resource type="DynamicFontData" id=15]
 font_path = "res://assets/font/Schrödinger.ttf"
 
 [sub_resource type="DynamicFont" id=16]
-size = 22
+size = 32
 font_data = SubResource( 15 )
 
 [sub_resource type="DynamicFontData" id=17]
@@ -74,7 +77,14 @@ font_path = "res://assets/font/Schrödinger.ttf"
 size = 22
 font_data = SubResource( 17 )
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFontData" id=19]
+font_path = "res://assets/font/Schrödinger.ttf"
+
+[sub_resource type="DynamicFont" id=20]
+size = 22
+font_data = SubResource( 19 )
+
+[sub_resource type="DynamicFont" id=21]
 size = 22
 font_data = ExtResource( 1 )
 
@@ -108,10 +118,10 @@ __meta__ = {
 
 [node name="Sprite" type="AnimatedSprite" parent="UI/Background"]
 position = Vector2( 320.56, 152 )
-scale = Vector2( 3, 3 )
-frames = SubResource( 3 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 5 )
 animation = "idle"
-frame = 1
+frame = 4
 playing = true
 
 [node name="Description" type="Label" parent="UI/Background"]
@@ -123,7 +133,7 @@ margin_left = -287.441
 margin_top = -312.0
 margin_right = 291.559
 margin_bottom = -247.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Escriba un nombre para su personaje."
 align = 1
 valign = 1
@@ -140,7 +150,7 @@ margin_left = -215.441
 margin_top = -80.0
 margin_right = -70.4407
 margin_bottom = -41.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "Aceptar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -153,7 +163,7 @@ margin_left = 65.0
 margin_top = -80.0
 margin_right = 178.0
 margin_bottom = -41.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 11 )
 text = "Volver"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -173,8 +183,8 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 473.0
 margin_bottom = 57.0
-custom_styles/normal = SubResource( 10 )
-custom_fonts/font = SubResource( 12 )
+custom_styles/normal = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 max_length = 16
 
 [node name="Confirm" type="Popup" parent="UI"]
@@ -219,7 +229,7 @@ margin_left = -140.0
 margin_top = 16.0
 margin_right = 145.0
 margin_bottom = 49.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "CONFIRMAR NOMBRE"
 __meta__ = {
@@ -233,7 +243,7 @@ margin_left = -148.0
 margin_top = 72.0
 margin_right = 148.0
 margin_bottom = 105.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 text = "PlayerName"
 align = 1
 valign = 1
@@ -250,7 +260,7 @@ margin_left = 52.0
 margin_top = 44.0
 margin_right = 155.0
 margin_bottom = 73.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 text = "Aceptar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -263,7 +273,7 @@ margin_left = 48.0
 margin_top = -40.0
 margin_right = 152.0
 margin_bottom = -11.0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 21 )
 text = "Volver"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -309,7 +319,7 @@ margin_left = -152.0
 margin_top = 16.0
 margin_right = 143.0
 margin_bottom = 49.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "NOMBRE YA EN USO"
 __meta__ = {
@@ -323,7 +333,7 @@ margin_left = -160.0
 margin_top = 64.0
 margin_right = 144.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 text = "Intente con otro nombre."
 align = 1
 valign = 1
@@ -336,7 +346,7 @@ margin_left = 136.0
 margin_top = 128.0
 margin_right = 281.0
 margin_bottom = 167.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 text = "Aceptar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -345,7 +355,6 @@ __meta__ = {
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -15.0
-autoplay = true
 
 [connection signal="confirm" from="." to="UI/Confirm" method="_on_NewPlayer_confirm"]
 [connection signal="pressed" from="UI/Background/EnterName" to="." method="_on_EnterName_pressed"]

@@ -188,7 +188,6 @@ text = "Cancelar"
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -15.0
-autoplay = true
 
 [connection signal="dataLoaded" from="." to="UI/Background/Table" method="_on_LoadGame_dataLoaded"]
 [connection signal="pressed" from="UI/Background/LoadGame" to="." method="_on_LoadGame_pressed"]

@@ -32,10 +32,10 @@ func close():
 
 func _input(event):
 	if event is InputEventKey:
-		if event.scancode == KEY_A:
+		if event.is_action_pressed("ui_accept"):
 			set_process_input(false)
 			npc.talk("A")
-		elif event.scancode == KEY_B:
+		elif event.is_action_pressed("ui_cancel"):
 			set_process_input(false)
 			npc.talk("B")
 

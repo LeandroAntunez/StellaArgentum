@@ -1,0 +1,534 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/menu/controls/Controls.gd" type="Script" id=2]
+[ext_resource path="res://assets/interface/controls/Keyboard keys (transparent).png" type="Texture" id=3]
+[ext_resource path="res://assets/interface/controls/keys-arrow-wsad-mouse.png" type="Texture" id=4]
+[ext_resource path="res://assets/font/Schrödinger.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 1.38504, 0.277008, 93.2597, 126.798 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 1.73749, 68.6375, 29.45, 27.55 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 97.25, 33.25, 152, 26 )
+
+[node name="Controls" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.0
+margin_top = 16.0
+margin_right = 52.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 1 )
+text = "Controles"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Movement" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.067
+margin_left = -280.0
+margin_top = 64.0
+margin_right = -171.0
+margin_bottom = 60.88
+custom_fonts/font = SubResource( 1 )
+text = "Movimiento"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+margin_left = 48.0
+margin_top = 104.0
+margin_right = 144.0
+margin_bottom = 296.0
+texture = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect14" type="TextureRect" parent="CanvasLayer"]
+margin_left = 8.0
+margin_top = 288.0
+margin_right = 37.0
+margin_bottom = 315.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect14"]
+margin_left = 8.0
+margin_right = 16.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect15" type="TextureRect" parent="CanvasLayer"]
+margin_left = 40.0
+margin_top = 288.0
+margin_right = 69.0
+margin_bottom = 315.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/TextureRect15"]
+margin_left = 8.0
+margin_right = 18.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "2"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect16" type="TextureRect" parent="CanvasLayer"]
+margin_left = 72.0
+margin_top = 288.0
+margin_right = 101.0
+margin_bottom = 315.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/TextureRect16"]
+margin_left = 8.0
+margin_right = 18.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "3"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect17" type="TextureRect" parent="CanvasLayer"]
+margin_left = 104.0
+margin_top = 288.0
+margin_right = 133.0
+margin_bottom = 315.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer/TextureRect17"]
+margin_left = 8.0
+margin_right = 18.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "4"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect18" type="TextureRect" parent="CanvasLayer"]
+margin_left = 136.0
+margin_top = 288.0
+margin_right = 165.0
+margin_bottom = 315.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="CanvasLayer/TextureRect18"]
+margin_left = 8.0
+margin_right = 18.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect19" type="TextureRect" parent="CanvasLayer"]
+margin_left = 168.0
+margin_top = 288.0
+margin_right = 197.0
+margin_bottom = 315.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="CanvasLayer/TextureRect19"]
+margin_left = 8.0
+margin_right = 18.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "6"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect20" type="TextureRect" parent="CanvasLayer"]
+margin_left = 200.0
+margin_top = 288.0
+margin_right = 229.0
+margin_bottom = 315.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="CanvasLayer/TextureRect20"]
+margin_left = 8.0
+margin_right = 18.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "7"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect21" type="TextureRect" parent="CanvasLayer"]
+margin_left = 232.0
+margin_top = 288.0
+margin_right = 261.0
+margin_bottom = 315.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="CanvasLayer/TextureRect21"]
+margin_left = 8.0
+margin_right = 18.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "8"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hotbar" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.067
+margin_left = -264.0
+margin_top = 264.0
+margin_right = -111.0
+margin_bottom = 260.88
+custom_fonts/font = SubResource( 1 )
+text = "Barra de Acción"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoBack" type="Button" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -40.0
+margin_right = 64.0
+margin_bottom = -8.0
+text = "Volver"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+self_modulate = Color( 0.164706, 0.164706, 0.164706, 1 )
+margin_left = 320.0
+margin_top = 56.0
+margin_right = 624.0
+margin_bottom = 312.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 297.0
+margin_bottom = 249.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer"]
+margin_right = 290.0
+margin_bottom = 242.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
+margin_right = 290.0
+margin_bottom = 27.0
+custom_constants/separation = 5
+
+[node name="Pause" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_top = 3.0
+margin_right = 132.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+text = "Pausa               "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 137.0
+margin_right = 166.0
+margin_bottom = 27.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer/TextureRect2"]
+margin_left = 8.0
+margin_top = 1.0
+margin_right = 16.0
+margin_bottom = 15.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "P"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 171.0
+margin_right = 200.0
+margin_bottom = 27.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer/TextureRect8"]
+margin_left = 6.0
+margin_top = 1.0
+margin_right = 23.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "esc"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
+margin_top = 31.0
+margin_right = 290.0
+margin_bottom = 58.0
+
+[node name="Equipment" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 3.0
+margin_right = 132.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+text = "Equipamento "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect10" type="TextureRect" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 136.0
+margin_right = 165.0
+margin_bottom = 27.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer2/TextureRect10"]
+margin_left = 9.0
+margin_top = 2.0
+margin_right = 17.0
+margin_bottom = 16.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "E"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
+margin_top = 62.0
+margin_right = 290.0
+margin_bottom = 89.0
+
+[node name="Inventory" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_top = 3.0
+margin_right = 135.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+text = "Inventario        "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect9" type="TextureRect" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 139.0
+margin_right = 168.0
+margin_bottom = 27.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer3/TextureRect9"]
+margin_left = 6.0
+margin_top = 3.0
+margin_right = 14.0
+margin_bottom = 17.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "P"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
+margin_top = 93.0
+margin_right = 290.0
+margin_bottom = 120.0
+
+[node name="Attack" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+margin_top = 3.0
+margin_right = 133.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+text = "Ataque             "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect11" type="TextureRect" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 137.0
+margin_right = 166.0
+margin_bottom = 27.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer4/TextureRect11"]
+margin_left = 8.0
+margin_top = 4.0
+margin_right = 26.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ctrl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
+margin_top = 124.0
+margin_right = 290.0
+margin_bottom = 151.0
+
+[node name="Spell" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+margin_top = 3.0
+margin_right = 132.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 1 )
+text = "Hechizo           "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect12" type="TextureRect" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+margin_left = 136.0
+margin_right = 165.0
+margin_bottom = 27.0
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer5/TextureRect12"]
+margin_left = 9.0
+margin_top = 5.0
+margin_right = 17.0
+margin_bottom = 19.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "P"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer"]
+margin_top = 155.0
+margin_right = 290.0
+margin_bottom = 176.0
+
+[node name="Interact" type="Label" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer6"]
+margin_right = 132.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 1 )
+text = "Interactuar     "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer6/Interact"]
+margin_left = 137.0
+margin_top = -2.0
+margin_right = 289.0
+margin_bottom = 24.0
+texture = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CanvasLayer/GoBack" to="." method="_on_GoBack_pressed"]
